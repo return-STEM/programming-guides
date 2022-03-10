@@ -46,9 +46,9 @@ for course_dir in glob(f"{source_path}*/"):
                     shutil.copytree(os.path.join(source_path, lesson_path), os.path.join(dest_path, lesson_path))
 
             try:
-                with open(os.path.join(source_path, lesson_path) + ".md", "r") as md:
+                with open(os.path.join(source_path, lesson_path) + ".md", "r", encoding="utf-8") as md:
                     processed_md = process_md(md)
-                    with open(os.path.join(dest_path, lesson_path) + ".mdx", "w+") as dest_md:
+                    with open(os.path.join(dest_path, lesson_path) + ".mdx", "w+", encoding="utf-8") as dest_md:
                         dest_md.write(processed_md)
             except FileNotFoundError:
                 pass
