@@ -1,3 +1,8 @@
+> This guide is still under development. We'll be overhauling the Introduction to Python content in the next few months. Stay tuned for more changes and better tutorials!
+> 
+> ~ *The Return STEM team*
+
+
 # Doing Math in Python
 * You can do math in Python just like you would in your math class, using symbols for basic operations:
   * For example: `a = 5 + 3` causes `8` (5 + 3) to be assigned to the variable `a`.
@@ -355,9 +360,9 @@ _Write the following short programs_
 
 Write a program that takes a temperature in Fahrenheit from the console, which it then converts into Celsius.
 
-_Formula:_  $(F - 32) * \frac{5}{9} = C$
+_Formula:_   (F - 32) * 5 / 9 = C
 
-Write a program a calculates the area of a rectangle given the length and width _Formula:_  $A = l * w$
+Write a program a calculates the area of a rectangle given the length and width _Formula:_  A = l * w
 
 **CHALLENGE: Write a program converts seconds to Hours:Minutes:Seconds format.** 
 
@@ -405,21 +410,21 @@ Write a program a calculates the area of a rectangle given the length and width 
 
 | Word | Definition |
 | :-: | :-: |
-| Integer Division (//) | Gives the whole number result of a division operation between two integers (whole numbers) |
-| Modulus (%) | Gives the remainder of a division operation between two integers (whole numbers) |
-| Exponent (\*\*) | Raises the left operand to the power of the right operand |
+| Integer Division (`//`) | Gives the whole number result of a division operation between two integers (whole numbers) |
+| Modulus (`%`) | Gives the remainder of a division operation between two integers (whole numbers) |
+| Exponent (`**`) | Raises the left operand to the power of the right operand |
 | import | Allows programmers to add, or import, modules in their code |
-| math.floor() | rounds floats down |
-| math.ceil() | rounds floats up |
-| math.sqrt(x) | returns the square root of the integer/float x as a float |
-| math.fabs(x) | returns the absolute value of x<br /> |
-| math.factorial() | returns the factorial of x, if x is not an integer or is negative, raises an error |
-| math.gcd(x,y) | Returns the greatest common divisor of x and y, if either is not an integer, raises an error |
-| math.pi | Evaluated to the digits of pi |
-| math.e | Evaluates to the digits of e<br /> |
-| random.random() | returns a random float between 0 and 1 |
-| random.uniform(x, y) | returns a random float in the range x - y |
-| random.randint(x, y) | returns the factorial of x, if x is not an integer or is negative, raises an error |
-| y=datetime.date(year, month, date) | assigns a date to the variable y |
-| datetime.date.today()<br /><br /> | returns the local date |
+| `math.floor()` | rounds floats down |
+| `math.ceil()` | rounds floats up |
+| `math.sqrt(x)` | returns the square root of the integer/float x as a float |
+| `math.fabs(x)` | returns the absolute value of x<br /> |
+| `math.factorial()` | returns the factorial of x, if x is not an integer or is negative, raises an error |
+| `math.gcd(x,y)` | Returns the greatest common divisor of x and y, if either is not an integer, raises an error |
+| `math.pi` | Evaluated to the digits of pi |
+| `math.e` | Evaluates to the digits of e<br /> |
+| `random.random()` | returns a random float between 0 and 1 |
+| `random.uniform(x, y)` | returns a random float in the range x - y |
+| `random.randint(x, y)` | returns the factorial of x, if x is not an integer or is negative, raises an error |
+| `y=datetime.date(year, month, date)` | assigns a date to the variable y |
+| `datetime.date.today()`| returns the local date |
 

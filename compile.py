@@ -16,8 +16,8 @@ def process_md(md):
     return md.read()
 
 
-root_test_path: str = "../return-stem.github.io/return-stem-website"
-md_dest_path: str = "public/guide/"
+root_test_path: str = "../return-stem-guides"
+md_dest_path: str = "public/"
 
 dest_path = os.path.join(root_test_path, md_dest_path)
 
@@ -29,6 +29,10 @@ for course_dir in glob(f"{source_path}*/"):
     makedir(course_path)
 
     metadata_path = os.path.join(course_dir, "metadata.json")
+    try:
+        os.remove(os.path.join(dest_path, dest_course_dir, "metadata.json"))
+    except:
+        pass
     shutil.copy(metadata_path, os.path.join(dest_path, dest_course_dir))
 
     with open(metadata_path) as metadataFile:

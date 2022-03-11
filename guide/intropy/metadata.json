@@ -21,17 +21,19 @@
       "href": "conditionals"
     },
     {
-      "name": "Control Structures: Looping",
-      "href": "looping"
+      "name": "Control Structures: Loops",
+      "href": "loops"
     },
     {
-      "name": "Arrays",
-      "href": "arrays"
+      "name": "Lists",
+      "href": "lists"
     },
     {
       "name": "Functions",
       "href": "functions"
-    },
+    }
+  ],
+  "wipLessons": [
     {
       "name": "C++ Standard Library (STL)",
       "href": "cppstandardlibrary"

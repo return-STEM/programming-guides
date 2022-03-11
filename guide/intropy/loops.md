@@ -1,74 +1,67 @@
-# 6.
-Loops
 
-Introduction to Python
-
-return STEM;
-
-Version 1
-
-This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
-
-![](loops%5Cloops0.png)
+> This guide is still under development. We'll be overhauling the Introduction to Python content in the next few months. Stay tuned for more changes and better tutorials!
+> 
+> ~ *The Return STEM team*
 
 # The Need for Loops
 
 * When you are writing programs, often you will want to perform the same action many times.
 * This can be done with loops and will result in having to write less code
-* For example, consider the following prompt: _Write a program to print all nonnegative integers lower than a number chosen by the user using input()._
-* This problem involves using the print() statement several times
-  * __The amount of times would __  __change __  __based on user input__
-* One method of doing this is the  _while loop_ .
+* For example, consider the following prompt:
+	* *Write a program to print all nonnegative integers lower than a number chosen by the user using `input()`.*
+* This problem involves using the `print()` statement several times
+  * The amount of times would **change based on user input**
+* One method of doing this is the *`while` loop*.
 
 # Structure of loops
 
-* A loop contains a  __header __ and a  __body__
-  * The  __header__  dictates how the loop behaves (how to loop)
-  * The  __body __ is indented (just like an if statement) and contains the code that is to be executed each time the loop "loops"
-    * A single "loop" of a loop is called an  __iteration __ or  __cycle__
+* A loop contains a **header** and a **body**
+  * The **header** dictates how the loop behaves (how to loop)
+  * The **body** is indented (just like an if statement) and contains the code that is to be executed each time the loop "loops"
+    * A single "loop" of a loop is called an **iteration** or **cycle**
 
+```python
+while (condition):             # Header
+    print("Loop body")         # Body
+    print("I am inside loop")  # Body
+print("Outside loop")          # Outside of body
+```
+
+```python
+for item in iterable:          # Header
+    print("Loop body")         # Body
+    print("I am inside loop")  # Body
+print("Outside loop")          # Outside of body
+```
+# The `while` Loop
+
+The basic syntax of the `while` loop is:
+
+```python
 while (condition):
+	do this
+	execute more statements
+```
 
-print("Loop body")
-
-print("I am inside loop")print("Outside loop")
-
-for item in iterable:
-
-print("Loop body")
-
-print("I am inside loop")
-
-print("Outside loop")
-
-# The While Loop
-
-The basic syntax of the while loop is:
-
-while (condition):	do this
-
-...	execute more statements
-
-* First, the loop checks whether the condition after the while keyword is True.
-  * __If __ it is True, it executes all statements inside the body of the loop.
-* Then, it goes back to the header, checks if the condition is True, and executes the body if it is
-* This cycle repeats until the condition becomes False
+* First, the loop checks whether the condition after the `while` keyword is `True`.
+  * **If** it is `True`, it executes all statements inside the body of the loop.
+* Then, it goes back to the header, checks if the condition is `True`, and executes the body if it is
+* This cycle repeats until the condition becomes `False`
   * When it is, it will skip the body and continue executing the rest of the program
-* You can think about while loops like this: _Execute all the statements in the body _  _while_  _ the _  _condition is_  _ true._
+* You can think about while loops like this:*Execute all the statements in the body **while** the **condition is** true.*
 
-Checks if the condition is true by making sure a < 10
+## While Loop Diagram
+```python
+	while a < 10:
+	print(b)
+	a += c
+```
 
-Modifies the variable used in the condition to get closer to the condition
+![While loop diagram](loops/loops-6-flowchart.png)
 
-Prints b, this part of the loop will usually be whatever the loop is trying to accomplish(such as a mathematical operation or modifying a string
+## Stopping `while` Loops
 
-while a < 10:	print(b)
-
-a += c
-
-# How to Stop while Loops
-
-While Loops need to be stopped to prevent an infinite loop
+`while` Loops need to be stopped to prevent an infinite loop
 
 An infinite loop is a while loop in which the given condition is never false, such as:
 
@@ -76,105 +69,96 @@ The variable for the condition is never being changed, and the condition will be
 
 Infinite loops resulting in the contents of the while loop repeating until the program crashes or is stopped.
 
+```python
 i = 0
-
 while i == 0:
-
-print(“This is an Infinite Loop”)
+	print("This is an infinite loop")
+```
 
 This program will output “this is an Infinite Loop”) until it is stopped or it crashes
 
-# How to Interact with while Loops
+# `break` and `continue`
 
-There are other ways to stop or change while loops without changing the condition, the break statement and the continue statement.
+There are other ways to stop or change while loops without changing the condition, the `break` statement and the `continue` statement.
 
-The break statement stops the while loop when the code reaches it, even if the condition is met.
+The `break` statement stops the while loop when the code reaches it, even if the condition is met.
 
-i = 1
-
-while i > 0:
-
-print("This is an Infinite Loop")
-
-if i == 5:
-
-break
-
-i += 1
+```python
+ i = 1
+ while i > 0:
+     print("This is an Infinite Loop")
+     if i == 5:
+         break
+     i += 1
+```
 
 This program will output “This is an Infinite Loop”) 5 times and then stop.
 
-The continue statement will stop the current iteration(repetition) of the while loop and move on to the next one.
+The `continue` statement will stop the current iteration(repetition) of the while loop and move on to the next one.
 
-i = 0
-
-while i < 10:
-
-i += 1
-
-if i == 5:
-
-continue
-
-print(i)
+```python
+ i = 0
+ while i < 10:
+     i += 1
+     if i == 5:
+         continue
+     print(i)
+```
 
 This program will output the numbers from 1 to 10 but skip 5.
 
-# Ending while Loops
+## Ending while Loops
 
-The else statement can be used at the end of while loops to output something else when the condition is no longer true.
+The `else` statement can be used at the end of while loops to output something else when the condition is no longer true.
 
-__The __  __else __  __clause will only run if the loop doesn't __  __break __  __prematurely__
+**The** **`else`** **clause will only run if the loop doesn't** **`break`** **prematurely**
 
-i = 0
+```python
+ i = 0
+ while i < 10:
+     i += 1
+     print(i)
+ else:
+	   print(“The numbers 1-10 have been printed”)
 
-while i < 10:
-
-i += 1
-
-print(i)
-
-else:
-
-print(“The numbers 1-10 have been printed”)
-
+```
 This program will output the numbers 1-10 and then print “The numbers 1-10 have been printed”
 
-# while Loop: Example
+## `while` Loop: Example
 
-Here’s an example of a while loop, solving the problem presented earlier:
+Here’s an example of a `while` loop, solving the problem presented earlier:
 
-x = int(input("Enter a positive number: "))while (x > 0):    x -= 1
 
-print(x)
+```
+x = int(input("Enter a positive number: "))
+while x > 0:
+	x -= 1
+	print(x)
+```
 
-First, the loop takes the user’s input using input().
+First, the loop takes the user’s input using `input()`.
 
-Afterwards, it executes the while loop:First, the loop checks if x is greater than zero. If it is, it subtracts 1 from x, and prints it. Then, it repeats this process. When x is zero, the loop ends. Since there are no more lines in the program, the program is finished.
+Afterwards, it executes the `while` loop:First, the loop checks if x is greater than zero. If it is, it subtracts 1 from x, and prints it. Then, it repeats this process. When x is zero, the loop ends. Since there are no more lines in the program, the program is finished.
 
-# while Loop Practice
+## `while` Loop Practice
 
-* What is a common way to create an infinite loop?
-* When does a while loop check the condition?
-  * Once, when the loop is started
-  * Twice, at the start and end of the loop
-  * Infinite times until the condition is not met or the loop is broken
-  * Never, it is there just for show
+What is a common way to create an infinite loop?
 
-* What is a common way to create an infinite loop?
-* When does a while loop check the condition?
-  * Once, when the loop is started
-  * Twice, at the start and end of the loop
-  * Infinite times until the condition is not met or the loop is broken
-  * Never, it is there just for show
+When does a while loop check the condition?
+	a. Once, when the loop is started
+	b. Twice, at the start and end of the loop
+	c. Infinite times until the condition is not met or the loop is broken
+	d. Never, it is there just for show
 
-# Approaching Loops and Algorithms with Loops
+# Tracing Loops
 
 When you’re debugging a very straightforward program like this:
 
-a = input()
-
-b = input() print(a / b)
+```python
+ a = input()
+ b = input()
+ print(a / b)
+```
 
 It’s quite intuitive - you can simply look at each line of the code and see whether it works or not.
 
@@ -182,9 +166,20 @@ However, for loops, this is not the case sometimes.
 
 Many times, when beginners write programs, their problems lie within loops, because they do not follow through each loop.
 
-When going through a loop, remember that the loop only checks for the condition  _at the start of an iteration_
+When going through a loop, remember that the loop only checks for the condition *at the start of an iteration*
 
 Sometimes your loop may not run at all because the initial condition is not satisfied when the program reaches the loop code
+
+We can use a **trace table** to better analyze looping code:
+
+```python
+i = 4
+j = 0
+while (j < 3):
+	i += 1
+    j += 1
+print(i + j)
+```
 
 | Iteration | Statement | Value | Explanation |
 | :-: | :-: | :-: | :-: |
@@ -196,62 +191,85 @@ Sometimes your loop may not run at all because the initial condition is not sati
 | 3 | j += 1 | i = 7, j = 3 |  |
 | END | N/A | i = 7, j = 3 | j < 3 is now False, so Python stops the loop. |
 
-Analyze this looping code:
+# The `for` Loop
 
-i = 4
+The `while` loop executes the content inside the loop while certain conditions are met.
 
-j = 0
+The `for` loop iterates (walks) through a list, string, dictionary, or other data structure
 
-while (j < 3):    i += 1
-
-j += 1
-
-print(i + j)
-
-# The for Loop
-
-* The while Loop executes the content inside the loop while certain conditions are met.
-* The for Loop iterates (walks) through a list, string, dictionary, or other data structure
-  * If something is able to be iterated (walked through a piece at a time) through, it is classified as  __iterable__
-* The basic syntax is:
-* The for loop goes across each element of the sequence, after executing the body of the loop every time it moves on to a new element.
-* First, we will cover for loops across a range of numbers.
+> If something is able to be iterated (walked through a piece at a time) through, it is classified as **iterable**
 
 Example of an iterable:
 
-for element in iterable:    execute body of the code
+![](loops/loops-6-iterables-1.png)
 
-# The for Loop over a range of numbers
+The `for` loop goes across each element of the sequence, after executing the body of the loop every time it moves on to a new element.
 
-To iterate through a set of numbers, you can use the range() function.
+```python
+for element in iterable:
+	execute body of the code
+```
+
+First, we will cover for loops across a range of numbers.
+## The `for` loop over a range of numbers
+
+To iterate through a set of numbers, you can use the `range()` function.
 
 The basic format is:
 
-For example:
+```python
+for i in range(start, end, increment):
+	body_of_loop
+```
 
-goes through 0, 2, 4, 6, 8.
+> **`start`:** Starting value, inclusive
+> 
+> **`end`:** Ending value, exclusive
+> 
+> **`increment`:** How much to increase by
 
-If you only give one number, it will use that number as the END and use start = 0 and increment = 1.
+For example, this code goes through 0, 2, 4, 6, 8.
 
-If you only give two, it will use the first as START and the second as END and increment will = 1.
+![](loops/loops-6-iterables-1-2.png)
 
-__Start:__  Starting value, inclusive
+```python
+for i in range(0, 10, 2):
+	body_of_loop
+```
 
-__End: __ Ending value, exclusive
+If you only give one number, it will use that number as `end` and use `start = 0` and `increment = 1`.
 
-__Increment:__  How much to increase by
+If you only give two, it will use the first as `start` and the second as `end` and `increment`  will default to 1.
 
-for i in range(start, end, increment):    body_of_loop
+### Examples
 
-for i in range(0, 10, 2):    body_of_loop
+```python
+for i in range(0, 10, 2):
+	# body_of_loop
+	# Iterates through 0, 2, 4, 6, 8
 
-# Approaching Loops and Algorithms with Loops
+for i in range(0, 10):
+	# body_of_loop
+	# Iterates through 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 
+for i in range(10):
+	# body_of_loop
+	# Iterates through 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+for i in range(5, 0, -1):
+	#body_of_loop
+	# Iterates through 5,4,3,2,1
+```
+
+## Algorithms with Loops: `for` loops
 Given the loop to the left, let’s see what python does when going through it
 
-for i in range(0, 6):    print(i)
+```python
+for i in range(0, 6):
+	print(i)
+```
 
-| i = | Statement | Explanation |
+| `i =` | Statement | Explanation |
 | :-: | :-: | :-: |
 | 0 | print(i) | First, Python starts the loop with i = 0. It then executes print(i). Since there is no more in the body, the loop then goes to the next value of i. |
 | 1 | print(i) | i = 1,so it does print(i), and goes to the next value. |
@@ -261,169 +279,124 @@ for i in range(0, 6):    print(i)
 | 5 | print(i) | i = 5, so it does print(i), and there are no more values. |
 | END | N/A | Since there are no more values, the loop ends. |
 
-# The for Loop over a range of numbers(Examples)
+## The `for` Loop Over a String
 
-for i in range(0, 10, 2):    #body_of_loop
-
-# Iterates through 0, 2, 4, 6, 8
-
-for i in range(0, 10):    #body_of_loop # Iterates through 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-
-for i in range(10):    #body_of_loop # Iterates through 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-
-for i in range(5, 0, -1):    #body_of_loop # Iterates through 5,4,3,2,1
-
-# The for Loop Over a String
-
-In the previous lessons, you learned that you can access the characters of a string by using str_name[index]. Remember that indices start from 0.
+In the previous lessons, you learned that you can access the characters of a string by using `str_name[index]`. Remember that indices start from 0.
 
 For example:
 
+```python
 s = "Hello World"
-
 s[0]
-
 >>> H
-
 s[1]
-
 >>> e
-
 s[5]
-
->>>
-
+>>>  
 s[6]
-
 >>> W
+```
 
 To iterate through a string, you can create a loop which iterates through a set of numbers, then use those numbers to reference each character:
 
-Remember that you can use len(s) to get the length of the string s.
+Remember that you can use `len(s)` to get the length of the string s.
 
+```python
 s = "Hello World"
+for i in range(len(s)):
+	print(s[i])
+```
 
-for i in range(len(s)):     print(s[i])
+This code will output `"Hello World"` with each character on its own line.
 
-This code will output “Hello World” with each character on its own line.
+While it is possible to use `range()`, Python has a built in method to iterate over a string:
 
-While it is possible to use range(), Python has a built in method to iterate over a string:
-
+```python
 s = "Hello World"
+for i in s:
+	print(i)
+```
 
-for i in s:     print(i)
+In this example, `i` will take on each character of the string `s` each time the body of the loop is executed.
 
-* In this example, i will take on each character of the string s each time the body of the loop is executed.
-
+```python
 s = "Hello World"
-
-for i in range(len(s)):     print(s[i])
+for i in range(len(s)):
+	print(s[i])
+```
 
 This method does the same thing as the method presented in the last slide, but is simpler and easier to read.
 
-# break in for loops
+## `break`,  `continue`, and `else`
+## `break` in `for` loops
 
-If you want a for loop to prematurely end, you can use the keyword break.
+If you want a for loop to prematurely end, you can use the keyword `break`.
 
-s = 'Python' for letter in s:     if letter == 'h':         break
+```python
+ s = 'Python' for letter in s:     if letter == 'h':         break
+     print("Current letter", letter)
+ >>>	Current letter: P
+ >>>	Current letter: y
+ >>>	Current letter: t
 
-print("Current letter", letter)
+```
+In this code, the code iterates through the letters of the string `s` until reaching `'h'`.
 
->>>	Current letter: P
+When the code reaches `'h'`,  the loop is broken and the code stops.
 
->>>	Current letter: y
+## `continue` in `for` loops
 
->>>	Current letter: t
+For loops can also use the `continue` keyword and in for loops this keyword can skip over a current iteration.
 
-In this code, the code iterates through the letters of the string s until reaching ‘h’.
+```python
+ s = 'Python' for letter in s:     if letter == 'h':         continue
+     print("Current letter", letter)
+ >>>	Current letter: P
+ >>>	Current letter: y
+ >>>	Current letter: t
+ >>>	Current letter: o
+ >>>	Current letter: n
 
-When the code reaches ‘h’ the loop is broken and the code stops.
+```
+In this example, the for loops iterates through each letter in the string s but skips h as the `if` statement followed by the `continue` keyword skips that iteration of the string.
 
-# continue in for loops
+## `else` in for loops
 
-For loops can also use the continue keyword and in for loops this keyword can skip over a current iteration.
+The else keyword can be used in for loops to print something when the loop is done, **if the loop does not exit prematurely with** **`break`**
 
-s = 'Python' for letter in s:     if letter == 'h':         continue
+This can be used to output a final remark once the loop is done without incorporating an `if` statement in your loop.
 
-print("Current letter", letter)
+These two blocks of code output the same thing, but the use of the `else` statement is shorter and easire to read.
 
->>>	Current letter: P
+```python
+ for i in range(10):
+    print(i)
+ else:
+    print(“Those were the numbers 0-9”)
+```
 
->>>	Current letter: y
+```python
+ for i in range(10):
+    print(i)
+    if i == 9:
+       print(“Those were the numbers 0-9)
+```
 
->>>	Current letter: t
+This code prints the letters 0 through 9 with the `for` loop and then prints 10 with the `else` statement.
 
->>>	Current letter: o
+## `for` Loop Practice
+Which use of the range function goes through every odd number from 1-20?
+	a. `for i in range(20, 2)`
+	b. `for i in range(1, 20, 2)`
+	c. `for i in range(1, 20, 1)`
+	d. `for i in range(20, 1)
 
->>>	Current letter: n
+Which data type can a for loop not iterate through?
+	a. Strings
+	b. Lists
+	c. Integers
 
-In this example, the for loops iterates through each letter in the string s but skips h as the if statement followed by the continue keyword skips that iteration of the string.
-
-# else in for loops
-
-The else keyword can be used in for loops to print something when the loop is done,  __if the loop does not exit prematurely with __  __break__
-
-This can be used to output a final remark once the loop is done without incorporating an if statement in your loop.
-
-These two blocks of code output the same thing, but the use of the else statement looks better and is more efficient.
-
-for i in range(10):
-
-print(i)
-
-else:
-
-print(10)
-
-This code prints the letters 0 through 9 with the for loop and then prints 10 with the else statement.
-
-for i in range(10):
-
-print(i)
-
-else:
-
-print(“Those were the numbers 0-9”)
-
-for i in range(10):
-
-print(i)
-
-if i == 9:
-
-print(“Those were the numbers 0-9)
-
-# for Loop Practice
-
-* Which use of the range function goes through every odd number from 1-20?
-* Which data type can a for loop not iterate through?
-  * Strings
-  * Lists
-  * Integers
-
-for i in range(20, 2)
-
-for i in range(1,20,2)
-
-for i in range(1,20,1)
-
-for i in range(20,1)
-
-* Which use of the range function goes through every odd number from 1-20?
-* Which data type can a for loop not iterate through?
-  * Strings
-  * Lists
-  * Integers
-
-for i in range(20, 2)
-
-for i in range(1,20,2)
-
-for i in range(1,20,1)
-
-for i in range(20,1)
-
-# while loop vs for loop
+# Which type of loop should I use?
 
 * Number of iterations
   * In a while loop the number of iterations is unknown
@@ -435,144 +408,105 @@ for i in range(20,1)
   * Iterating through a list, string, etc.
   * Iterating through a sequence of numbers
 
-# if statement inside of while/for loops
+# `if` statement inside of `while`/`for` loops
+In previous examples, you'll see that we included `if` statements inside of loops.
 
-In previous examples, you'll see that we included if statements inside of loops.
+`if` statements simply check for the condition, every time to loop runs
 
-if statements simply check for the condition, every time to loop runs
+You still need to indent specifically for the `if` statement.
 
-You still need to indent specifically for the if statement.
-
-s = 'Python'for letter in s:    if letter == 'h':        break
-
-print("Current letter", letter)
+```python
+s = 'Python'
+for letter in s:
+	if letter == 'h':
+		break
+    print("Current letter", letter)
 
 >>> Current letter: P
-
 >>> Current letter: y
-
 >>> Current letter: t
+```
 
-You can use if statements to check for certain conditions and end loops early, or do operations on specific characters (the character is equal to "a", etc.)
-
+You can use `if` statements to check for certain conditions and end loops early, or do operations on specific characters (the character is equal to `"a"`, etc.)
 # Nested loops
-
 You can also have loops inside of loops to repeat complex tasks multiple times.
 
 The inner loop would be fully executed every time the outer loop cycles (iterates) one time.
 
-days_of_week = 'MTWTF'for weeks_of_month in range(1,5):
-
-print("week " + str(weeks_of_month))
-
-for day in days_of_week:
-
-print(day)
+```python
+days_of_week = 'MTWHF'
+for weeks_of_month in range(1,5):
+	print("week " + str(weeks_of_month))
+	for day in days_of_week:
+		print(day)
 
 >>> week 1 # Outer Loop iterates once
-
 >>> M # Inner Loop iteration 1
-
 >>> T # Inner Loop iteration 2
-
 >>> W # Inner Loop iteration 3
-
->>> T # Inner Loop iteration 4
-
+>>> H # Inner Loop iteration 4
 >>> F # Inner Loop iteration 5
-
 >>> week 2 # Outer loop iterates once
-
 >>> M # Inner Loop iteration 1
-
 >>> T # Inner Loop iteration 2
-
 >>> W # Inner Loop iteration 3
-
->>> T # Inner Loop iteration 4
-
+>>> H # Inner Loop iteration 4
 >>> F # Inner Loop iteration 5
-
 >>> week 3 # Outer loop iterates once
-
 >>> M # Inner Loop iteration 1
-
 >>> T # Inner Loop iteration 2
-
 >>> W # Inner Loop iteration 3
-
->>> T # Inner Loop iteration 4
-
+>>> H # Inner Loop iteration 4
 >>> F # Inner Loop iteration 5
-
 >>> week 4 # Outer loop iterates once
-
 >>> M # Inner Loop iteration 1
-
 >>> T # Inner Loop iteration 2
-
 >>> W # Inner Loop iteration 3
-
->>> T # Inner Loop iteration 4
-
+>>> H # Inner Loop iteration 4
 >>> F # Inner Loop iteration 5
+
+```
 
 # Defensive Programming
-
-* Any program you write that requires user input should be  __defensive__
+* Any program you write that requires user input should be **defensive**
   * They should be able to deal with any input the user enters, even if it is invalid
     * The program should not crash whenever the user enters invalid input
-* This can be done using if __ __ statements to check user input and while loops to restart the program
+* This can be done using `if` statements to check user input and `while` loops to restart the program
 
+```python
 while True:
-
-x = input("Please enter a three letter word")
-
-if len(x) == 3:
-
-break
-
-print("The word you entered is not three letters long. Please try again")
-
+    x = input("Please enter a three letter word")
+    if len(x) == 3:
+        break
+    print("The word you entered is not three letters long. Please try again")
 # Do something with the three letter word
-
 # We now know for sure it is three letters and a string
+```
+
+
 
 You can and should perform any check that may crash the program:
 
+```python
 print("This program does division for you")
-
 while True:
-
-x = input("Enter a positive integer dividend: ")
-
-y = input("Enter a positive integer divisor: ")
-
-if not (x.isnumeric() and y.isnumeric()):
-
-print("Please enter numbers")
-
-continue
-
-# Now we know x and y can be safely casted to integers without crashing
-
-x = int(x)
-
-y = int(y)
-
-if y == 0:
-
-print("Your divisor cannot be zero")
-
-continue
-
-# If we pass all above checks, we can break out of the input loop
-
-break
-
+	x = input("Enter a positive integer dividend: ")
+	y = input("Enter a positive integer divisor: ")
+	if not (x.isnumeric() and y.isnumeric()):
+		print("Please enter numbers")
+		continue
+	# Now we know x and y can be safely casted to integers without crashing
+	x = int(x)
+	y = int(y)
+	if y == 0:
+		print("Your divisor cannot be zero")
+		continue
+	# If we pass all above checks, we can break out of the input loop
+	break
 # Now we can safely divide by y without possibly causing ZeroDivisionError
-
 print(x / y)
+**
+```
 
 # Vocabulary
 
@@ -589,9 +523,9 @@ print(x / y)
 
 | Word | Definition |
 | :-: | :-: |
-| while (condition): | A loop that will continue to cycle until the condition is False. Checks the condition before each iteration. |
-| range(start, end, increment) | Iterates through a sequence of numbers |
-| for val in seq: | A loop that cycles through each element in the sequence |
-| break | Keyword that halts execution of a loop body and exits the loop; skips to the next line of unindented code |
-| continue | Keyword that halts execution of a loop body and skips to the next cycle |
+| `while (condition):` | A loop that will continue to cycle until the condition is False. Checks the condition before each iteration. |
+| `range(start, end, increment)` | Iterates through a sequence of numbers |
+| `for val in seq:` | A loop that cycles through each element in the sequence |
+| `break` | Keyword that halts execution of a loop body and exits the loop; skips to the next line of unindented code |
+| `continue` | Keyword that halts execution of a loop body and skips to the next cycle |
 

@@ -1,6 +1,12 @@
 {
   "lessons": [
     {
+      "name": "Control Structures: Conditionals",
+      "href": "conditionals"
+    }
+  ],
+  "wipLessons": [
+    {
       "name": "Introduction",
       "href": "introduction"
     },
@@ -17,12 +23,8 @@
       "href": "arithmetic"
     },
     {
-      "name": "Control Structures: Conditionals",
-      "href": "conditionals"
-    },
-    {
-      "name": "Control Structures: Looping",
-      "href": "looping"
+      "name": "Control Structures: Loops",
+      "href": "loops"
     },
     {
       "name": "Arrays",
