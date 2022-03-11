@@ -1,15 +1,15 @@
 {
   "lessons": [
     {
+      "name": "Introduction",
+      "href": "introduction"
+    },
+    {
       "name": "Control Structures: Conditionals",
       "href": "conditionals"
     }
   ],
   "wipLessons": [
-    {
-      "name": "Introduction",
-      "href": "introduction"
-    },
     {
       "name": "Variables and Data Types",
       "href": "variables"

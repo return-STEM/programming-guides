@@ -12,8 +12,20 @@ def makedir(directory):
         print("Already exists!")
 
 
+def strip_comments(md_text):
+    anchor = md_text.find("%%")
+    while anchor != -1:
+        next = md_text.find("%%", anchor + 1)
+        md_text = md_text[:anchor] + md_text[next + 2:]
+        anchor = md_text.find("%%")
+    return md_text
+
 def process_md(md):
-    return md.read()
+    md_text = strip_comments(md.read())
+
+    print(f"Finished processing {md.name}")
+
+    return md_text
 
 
 root_test_path: str = "../return-stem-guides"

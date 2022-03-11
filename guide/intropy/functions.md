@@ -1,3 +1,8 @@
+
+> This guide is still under development. We'll be overhauling the Introduction to Python content in the next few months. Stay tuned for more changes and better tutorials!
+> 
+> ~ *The Return STEM team*
+
 # Prelude: style
 
 The **style** of a program is how it looks. This affects the code's readability. Code should be easy to read and look good so it's easier to expand and improve in the future.
