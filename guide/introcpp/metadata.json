@@ -5,15 +5,11 @@
       "href": "introduction"
     },
     {
-      "name": "Control Structures: Conditionals",
-      "href": "conditionals"
+      "name": "Variables and Data Types",
+      "href": "variables"
     }
   ],
   "wipLessons": [
-    {
-      "name": "Variables and Data Types",
-      "href": "variables"
-    },
     {
       "name": "Console I/O",
       "href": "consoleio"
@@ -21,6 +17,10 @@
     {
       "name": "Arithmetic Operations",
       "href": "arithmetic"
+    },
+    {
+      "name": "Control Structures: Conditionals",
+      "href": "conditionals"
     },
     {
       "name": "Control Structures: Loops",
