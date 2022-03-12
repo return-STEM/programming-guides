@@ -1,12 +1,14 @@
 Up until now, you've learned to make **linear** C++ programs, where the program executes from top to bottom. Sometimes the program will take a break to ask for user input, but the way it runs is pretty straightforward.
 
-**Control structures** change that up a bit. This lesson, we'll be showing you how to write programs that decide what code to run. This is called the **control flow** of the program, or which "path" the program takes. Think of it like a fork in the road–you decide to either go right or left. This brings us to our first challenge: figuring out how our computers make decisions.
+**Control structures** change that up a bit. This lesson, we'll be showing you how to write programs that decide what code to run. This is called the **control flow** of the program, or which "path" the program takes. Think of it like a fork in the road–you decide to either go right or left. This brings us to our first challenge: figuring out how our computers make decisions. %%TODO i'm not sure about calling it a challenge for us, maybe use a better sort of transition%%
 
 # How Do Computers Make Decisions?
 
 Computers make decisions a little differently from humans. When I choose what I'll eat for lunch, I need to ask myself a few questions: What do I want? How much am I willing to spend? How convenient is it for me to get it? All these questions have an infinite number of answers.
 
-However, as you might remember from lesson 2, computers operate on an on-or-off basis–this means that each question can only have two answers, `true` or `false`, or 0 or 1. In C++, there's a data type for that–the **boolean**! In summary, each question our program has to answer needs to have a boolean answer, either `true` or `false`.
+However, as you might remember from lesson 2, computers operate on an on-or-off basis–this means that each question can only have two answers, `true` or `false`, or 0 or 1. In C++, there's a data type for that–the %%shouldn't this have the other like the grave(below the tilda)%%**boolean**! In summary, each question our program has to answer needs to have a boolean answer, either `true` or `false`.
+
+%%TODO maybe link to a lot of details about the boolean datatype that would  be in one of the earlier lessons%%
 
 # Relational Operators
 
@@ -59,10 +61,12 @@ cout << "Program done." << endl;
 ```
 
 This code lets a user input a temperature in Fahrenheit and outputs `It's hot outside` if the temperature is greater than 80 degrees. Regardless of what the temperature is, the program will always output `Program done.` This is because the second `cout` isn't part of the `if` statement's code block, so it's executed right after the `if` block is evaluated.
-
+%%TODO somewhere you need to mention how if it's one line you don't need the curly braces%%
 We can use a flowchart to visualize the **control flow** of the program. This is especially useful with more complex programs–you'll see this later
 
 ![](conditionals/image2.png)
+
+%%TODO SVG %%
 
 Any amount of code can be put inside an `if` block–it just needs to be enclosed in the curly braces. Also note the indentation–while it's not required by C++, it lets the programmer know what is and isn't inside the `if` block.
 
@@ -90,6 +94,8 @@ The `else` clause is placed immediately after the `if` block we want to apply it
 The flowchart looks like this:
 
 ![](conditionals/image3.png)
+
+%%TODO SVG%%
 ## `else if` clauses
 
 The `else if` clause lets us check for another condition of the preceding `if` condition is false. This lets the program make more complex decisions by testing multiple boolean conditions. Let's modify our program to also test if the temperature is below freezing:
@@ -116,6 +122,8 @@ Finally, if the temperature is neither above 80 or below 32, the program outputs
 
 The flowchart looks like this:
 ![](conditionals/image1.png)
+
+%%TODO SVG%%
 
 The flowchart is a little complex, but the main takeaway here is that **order matters.** We're first checking if the temperature is greater than 80, then we're checking if the temperature is less than 32. This matters sometimes–consider this example:
 
@@ -161,7 +169,7 @@ Operator | C++ Syntax | Behavior
 -----|-----|-----
 NOT | `!` | Inverts the condition
 AND | `&&` | `true` only if **both** sides are true
-OR | `||` | `true` if **either** side is true
+OR | `\|\|` | `true` if **either** side is true 
 
 The NOT operator is the simplest: it simply inverts a single boolean condition, turning `true` into `false` and vice versa. AND and OR operate on two boolean conditions, becoming true when **both are true** (AND) or when **either are true** (OR). Here are some examples:
 
@@ -218,6 +226,8 @@ We can override this order of precedence with parenthesis.
 ``false && (true || true)``
 
 This evaluates to `false` because this time we first evaluate `true || true` which turns into `true`, but then `false && true` evaluates to `false`.
+
+%%TODO mention that even though this order exists, for more readable code, we recommend explicit parenthesis%%
 
 # Nested `if` statements
 
@@ -372,7 +382,7 @@ else if (house == 20) {
 }
 ```
 
-If we wanted to find house 20, we'd need to make 4 comparisons. Although this is the **worse-case** scenario, this is still slower than if we used a `switch` statement:
+If we wanted to find house 20, we'd need to make 4 comparisons. Although this is the **worse-case** scenario, this %% TODO well the worst case scenario should be the slowest, maybe say generally the average performance is slower%%is still slower than if we used a `switch` statement:
 
 ```cpp
 int house
