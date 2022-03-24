@@ -21,22 +21,27 @@ For example, a plant outside has many attributes: green, living, size, age, type
 
 We will discuss the formal definition of a class in later topics, but here is a peek into what a defined class looks like:
 ```python
-1 class Dog: #Class definition
-2	 species = "Canis Familiaris" #Data storage
-3	 def __init__(self, name, breed, age):
-4		 self.name = name
-5		 self.breed = breed
-6		 self.age = age
-7	 def bark():   #Class methods
-8		 print("Bark! Bark!")
-9	 def birthday():  #Class methods
-10		 self.age += 1
-11		 print(f"Happy {self.age}th Birthday, {self.name}!")
+class Dog: # Class definition
+
+	species = "Canis Familiaris" # Data storage
+	
+	def __init__(self, name, breed, age):
+		self.name = name
+		self.breed = breed
+		self.age = age
+		
+	def bark():   # Class methods
+		print("Bark! Bark!")
+		
+	def birthday():  # Class methods
+		self.age += 1
+		print(f"Happy {self.age}th Birthday, {self.name}!")
 ```
 
 # Principles of Object-Oriented Programming
 
 Object-oriented programming is based on four principles:
+
 1. **Encapsulation**
 	1. Data and functions are packed into one object
 	2. The internal state of the object is hidden
@@ -55,12 +60,14 @@ Object-oriented programming is based on four principles:
 - A bank account can only be accessed by someone with the right credentials. 
 
 All members of a class are public by default. However, we can mangle the names of them to change that.
+
 Protected members of a class are denoted by a `_` in front of them. They can be used by derived classes and base classes, but cannot be used outside of the class.
+
 Private members are denoted with two underscores in front of them: `__`. They can only be used in their class, not by derived classes or outside of the class.
 
-`name` (public)
-`_bark()` (protected)
-`__withdraw()` (private)
+- `name` (public)
+- `_bark()` (protected)
+- `__withdraw()` (private)
 
 ## Inheritance
 
