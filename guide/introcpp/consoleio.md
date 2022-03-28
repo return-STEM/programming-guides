@@ -23,11 +23,6 @@ Strings can be defined like other data types, like this:
 ```cpp
 string str1;
 ```
-However, you must include the string header file to do this, just like <iostream>.
-```
-#include <iostream>
-#include <string>
-```
 You can define strings in different ways:
 ```cpp
 string s = "a string";
