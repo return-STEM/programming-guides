@@ -1,690 +1,256 @@
-In this course, you will learn the concept of object-oriented programming, which will take your basic skills to the next level. Since all programming is built on the basics, in this first lesson we will cover some key points of programming as a refresher to you. 
+﻿
+# Console Input/Output
 
-Many students that learn complex concepts struggle not with the new material, but with the fundamentals. When in doubt, go back and relearn the fundamentals. 
+Every program you will write will take some form of input, and then give you back some output. In this lesson, you will learn how to take input and output information through the console. 
 
-# Variables and Data Types
-Variables store information, which can have a variety of different types:
+You've already learned some of this - in your first ever program, you outputted the text Hello World to the console. Now, you'll learn more behind console output, and learn how to accept input from the console. 
 
-|Data Type | What they represent|
-|--- | ---|
-|int | Positive or negative whole numbers |
-|float | Positive or negative decimal numbers |
-|bool | True or False | 
-|str | Unicode characters |
+## Console Output
 
-Aside from this, there are also more complex data types that represent multiple pieces of data, called **data structures**.
+You've learned plenty of data types in the previous lesson [link to lesson 2].
+These data types can represent a variety of different numbers and other useful values, but they don't represent a really important type of data. All text, which can include characters (letters), words, sentences, and paragraphs, can be represented using strings. Strings are identified by double quotes surrounding them, and can contain any characters.  
+For example, a string might look like this: 
 
-|Data Type | What they represent | 
-|---|----|
-| list | Mutable collection of data | 
-| tuple | Immutable collection of data | 
-| set | Immutable, unindexed collection | 
-| dict | collection of data in key:value pairs |
+`"I woke up at 8 am today."`
 
-Data types are set when the variable is declared, but they may be specifically modified using these functions. This is called **typecasting**.
+When you want to output text to the console, you will need to make it a string. 
 
-| Function | Result | Behavior with: |
-| :-: | :-: | :-: | :-: | :-: | :-: |
-|  |  | int | float | bool | str |
-| int() | int | Already an int | int(5.3) → 5 | int(True) → 1<br />int(False) → 0 | int("10") → 10 |
-| float() | float | float(5) → 5.0 | Already a float<br /> | float(True) → 1.0<br />float(False) → 0.0 | float("3.5") → 3.5 |
-| bool() | bool | bool(5) → True<br />bool(0) → False | bool(5.3)→ True<br />bool(0.0)→ False | Already a bool | bool("pie") → True<br />bool("") → false |
-| str() | str | str(5) → "5" | str(5.3) → "5.3" | str(True) → "True"<br />str(False)→ "False" | Already a str |
+If you don't include it as a string, C++ will think they are other variables and your code will not compile. 
 
-You may retrieve the type of a variable with `type()` .
+## The `String` class
 
-```python
-
-x = 5
-print(type(5))
-
->>> <class 'int'>
+Strings can be defined like other data types, like this:
+```cpp
+string str1;
 ```
-# Console I/O and String Manipulation
-Text is displayed on the console using `print()`, and can be collected through `input()`. 
+However, you must include the string header file to do this, just like <iostream>.
+```
+#include <iostream>
+#include <string>
+```
+You can define strings in different ways:
+```cpp
+string s = "a string";
+```
+Or simply,
+```cpp
+string s
+```
+If you don't want to define it yet. 
 
-`input()` can take one parameter, the prompt of the input, like this: 
+## Escape Characters
 
-```python
-name = input("What's your name?")
->>> What's your name? 
+Notice that because we open and close strings with ", when we want to use the " character in our strings, C++ will think you are making two strings, like this:
+```cpp
+cout << "Mary said, "hello everyone" on tuesday";
 ```
 
-Print can take the following parameters:  
-`print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)`
+Thankfully, we can use escape characters to tell C++ that our quotes (") are not part of declaring the string. 
+When we use the backslash character, `\`, followed by another, C++ considers at as one escape character. 
+To use quotes in your string, for example, you would use `\"`. 
 
-> `*objects` is what you want to print. You can put multiple variables here, separated by commas
-> 
-> `sep` separates `objects` if more than one is provided. Defaults to a space.
-> 
-> `end` is appended (added on) to the end of what is printed. Defaults to a newline.
-> 
-> `file` determines where Python will print to. Default to `sys.stdout` (the terminal).
-> 
-> `flush` flushes the buffer and "pushes" to the terminal where we see it. [Read more here.](https://www.geeksforgeeks.org/python-sys-stdout-flush/). Defaults to `False`, so the buffer is flushed every line.
+Escape characters can also be used for other purposes: for example, a backslash followed by an n, `\n`, signifies a newline character. When C++ sees this character, it will cause the following text to be printed on the line below the current one. 
 
-The `print()` you are used to uses all these default parameters, so when you print multiple strings like this: 
+```cpp
+#include <iostream>
 
-```python
-print("Green Eggs", "and", "Ham)
->>> Green Eggs and Ham
+
+using namespace std;
+
+int main()
+{
+    cout << "Hello \nWorld";
+}
+
+>>>Hello
+>>>World
 ```
 
-## String Manipulation
-Strings can be manupulated using the following operators, functions, and methods:
 
-### Concatenation (`+`)
+Similarly, `\t` is a tab character, which moves the text to the next tab position. It doesn't add a new line. 
 
-You can **append** one string to another using the `+` operator. 
-
-```python
-
-a = "Tree"  
-b = "House"
-
-print (a + b)
->>> TreeHouse
+Finally, if we want to use the \ character in a string, we can use two of them in a row: `\\`. 
+```cpp
+cout<<”\”May the Force be with you\””;
 ```
+Common escape characters: 
+| Escape character | Function | 
+| --- | --- | 
+| \n | Outputs a newline | 
+| \t | Outputs a tab | 
+| \’ | Outputs a single quotation mark | 
+| \” | Outputs a double quotation mark | 
+| \\ | Outputs a slash | 
 
-> Unlike `print`, concatenation does **not** add separators (default spaces) between strings.
 
-## Repetition (`*`)
-You can append one string to itself `n` times by using the `*` operator. 
 
-```python
-a = "Tree"
+## The `cin` statement
 
-print(a * 3)
->>> TreeTreeTree
+Now that we have gone over outputting something to the console for the user to see, we will learn how to take an input from a user. The command cin is used for this task. It takes an input through the standard input device, usually a keyboard, and stores it in a predefined variable. A stream extraction operator (>>) goes between the variable name and the cin statement. 
+
+Notice that for cin, we use >> operators, while for cout we use <<. 
+```cpp
+int age;
+cin >> age;
 ```
+When using cin, the user will be prompted to give input on the console. You may type anything into it, and submit your input by pressing ENTER or RETURN. 
 
-## Accessing a character (Indexing)
-You can access a character at the `n`th index of a string with indexing operator `[]`
+Consider the following code: 
 
-```python
-a = "Tree"
+```cpp
+#include <iostream>
 
-print(a[2])
->>> e
-```
-
-## Slicing
-You can access multiple characters from a string to create a slice of the string, from index `a` to `b`. 
-
-Remember that the `start` index is inclusive of the value, but `end` is exclusive of the value. 
-
-Finally, when `start` is excluded, Python assumes `start` is 0.
-
-If `end` is excluded, Python assumes the end of the string is `end`. 
-
-```python
-a = "TreeHouse"
-
-print(a[:3])
-print(a[2:6])
-print(a[2:])
-
->>> Tre
->>> eeHo
->>> eeHouse
-```
-
-For Python 3.6+, you can use f-strings (Currently, we're on 3.10, but sometimes you might see 3.5 on old websites). 
-
-They're declared like this:  
+using namespace std;
+int main()
+{
+    int age; 
+    cout << "What is your age? ";
+    cin >> age;
+    cout << "You are " << age << " years old. " << endl;
+}
 
 ```
-f"content"
+When run, this code will prompt the user for their name. Notice that it does not print what comes after it till you give it input. 
+
+Try asking some questions to the user, collecting the input, and displaying the input in some way using `cin` and `cout`. 
+
+If we want to accept multiple inputs on the same line and store them in multiple variables, we do something similar. 
+
+```cpp
+#include <iostream>
+
+using namespace std;
+int main()
+{
+    int month, day;
+    cin >> month >> day;
+    cout << "The day is " << day << " and the month is " << month << endl;
+}
 ```
 
-When you want a variable to used in them, you can include the name in curly braces `{}`. 
+The inputs are separated by spaces. 
 
-For example:  
+However, notice that in these examples, we all used the `int` data type. When you try to input something that is not an `int` into a cin for a `int` variable, it will not work well. 
 
-```python
-Name = "Alex"
-Color = "Green"
+Here's another example, this time accepting a string:
 
-print(f"My name is {Name} and my favorite color is {Color}")
->>> My name is Alex and my favorite color is Green  
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+int main()
+{
+    string name;
+    cout << "What is your name? ";
+    cin >> name;
+    cout << "Hello, " << name;
+  
+}
 ```
 
-Alternatively, you can use `.format()` or `%s`, which look like this:
 
-```python
-print("My name is {} and my favorite color is {}".format(Name, Color)
-print("My name is %s and my favorite color is %s" % (Name, Color)")
+## I/O Manipulation
+
+The basic format of the cin statement isn’t always useful because we might want to receive the input in other ways. For this reason, there are many functions in C++ that help with this. 
+
+`getline(cin, str)`  receives input from the console and stores it inside a variable (in this case, called `str`). It performs a similar function to `cin`, but can take in input separated by spaces. For example, in this program, 
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+int main()
+{
+    string name;
+    cout << "What is your name?";
+    cin >> name;
+    cout << "Your name is " << name;
+}
+
+>>> What is your name? 
+>>> John Smith
+>>> Your name is John
+```
+If the user inputs their full name (something like "John Smith"), only "John" will be stored inside `name`. This is because cin stops reading input after a space. 
+
+However, `getline` stops at a new line, or when you press ENTER on your keyboard.
+
+The same program using getline would look like this:
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+int main()
+{
+    string name;
+    cout << "What is your name?";
+    getline(cin, name);
+    cout << "Your name is " << name;
+}
+>>> What is your name? 
+>>> John Smith
+>>> Your name is John Smith
 ```
 
-Which accomplishes the same task as above. 
+Another function similar to `cin.get()` is the `cin.peek()` function. Instead of moving through the input stream and storing characters in variables, the function just peeks at the next character and stores it in a variable. Since the function doesn’t move through the input stream, using the `cin.peek()` function multiple times won’t move through the characters, it will just stay at the next character. Another important thing to remember is that this function doesn’t accept a parameter, you have to set it equal to a parameter like this: `ch = cin.peek()`.
 
-Here's a table of escape characters:
 
-  
+`cin.ignore(n, ch)` is used to ignore characters in an inputted string until either n characters have been read or a certain character (ch) has been read (whatever comes first). `cin.get()` is used after this to show what character we are at.
 
-\n
 
-Starts a new line
+## `<iomanip>`
 
-print(“Hello\nWorld”)
-
-  
-
-> Hello
-
-> World
-
-\b
-
-Backspace
-
-print(“Hello \bWorld”)
-
-  
-
-> HelloWorld
-
-\t
-
-Works like a tab
-
-print(“Hello\tWorld”)
-
-  
-
-> Hello    World
-
-\\
-
-Acts as a regular backslash
-
-print(“Ok\\”)
-
-  
-
-> Ok\
-
-\'
-
-Acts as a regular single quote (apostrophe)
-
-print('Rob\'s World')
-
-  
-
-> Rob’s World
-
-\"
-
-Acts as a regular double quote
-
-print("He said \"try to\"")
-
-  
-
-> He said "try to"
-
-  
-  
-
-##Basic Operations
-
-  
-Python has many operators, including basic ones:  
-  
-
-Python Syntax
-
-Operation
-
-Math Symbol
-
-Example
-
-Result
-
-+
-
-Addition
-
-+
-
-5 + 2
-
-7
-
--
-
-Subtraction
-
-−
-
-6 - 4
-
-2
-
-*
-
-Multiplication
-
-×
-
-4 * 3
-
-12
-
-/
-
-Division
-
-÷
-
-8 / 4
-
-2
-
-  
-  
-
-Here are some other ones that you might not be as familiar with:  
-  
-
-Python Syntax
-
-Operation
-
-Math Symbol
-
-Example
-
-Result
-
-//
-
-Integer Division
-
-None
-
-13 // 4
-
-3
-
-%
-
-Modulus
-
-%
-
-17 % 4
-
-1
-
-**
-
-Exponent
-
-Superscript
-
-5 ** 2
-
-25
-
-  
-
-Along with this, here are some useful functions, some of which are contained in the `math` module. 
-
-  
-As a reminder, you can use the `math` module by including `import math` at the start of the program. 
-
-  
-
-|Function | Behavior | Example
-
-| — | — | —- |
-
-|round(number, digit=0) | Rounds number to the digit th decimal place. | round(3.1415, 2) → 3.14 | 
-
-|math.sqrt(x) | Returns the square root of x as a float | math.sqrt(4) → 2.0 | 
-
-|math.fabs(x) | Returns the absolute value of x as a float | math.fabs(-3) → 3.0 |
-
-|math.factorial(x) | Returns the factorial of x | math.factorial(5) → 120 | 
-
-|math.gcd(x, y) | Returns the greatest common divisor of x and y | math.gcd(75, 35 ) → 5|
-
-|math.pi| Evaluates the digits of pi | math.pi → 3.141592653589793 | 
-
-|math.e | Evalues the digits of e |  2.718281828459045 | 
-
-  
-
-Additionally, you can generate random numbers using the `random` module. 
-
-|Function | Behavior | Example | 
-
-| — | —- | —- | 
-
-|random.random() | Returns a random float between 0 and 1 | random.random() → 0.15074098317978457 | 
-
-|random.uniform(x, y) | Returns a random float between x and y | random.uniform(1,5)
-
-→ 2.8951547807157176 | 
-
-|random.randint(x, y) | Returns a random integer between x and y | random.randint(x, y) → 4| 
-
-  
-
-##Control Structures: Conditionals
-
-  
-
-An `if` statement looks like this: 
-
-```python
-
-if (conditional1):
-
-do_something()
-
-elif (conditional2):
-
-do_something_else()
-
-else:  
-do_a_thing()
-
+Before you use any of the following tools, remember to include the `<iomanip>` library, like this: 
+```cpp
+#include <iomanip>
 ```
 
-  
+`setprecision()` is used to manage the number of digits that is in an output. For example, if we wanted to output a long number rounded to 3 digits, we pass 3 as the parameter to `setprecision()`. 
+```cpp
+#include <iostream>
+#include <iomanip>
 
-  
-Remember that you may use the following comparison operators: 
+using namespace std;
+int main()
+{
+  float pi = 3.1415;
+  cout << pi << endl;
+  cout << setprecision(3) << pi << endl;
+}
+>>> 3.1416
+>>> 3.14
+```
+After settings the precision to 3, only 3 digits of pi are displayed. 
 
-  
+Another function that deals with outputting a certain number of digits is fixed. It is used along with `setprecision()` and rounds the number of digits after the decimal point. If we wanted 2 digits after the decimal point, we would pass 2 as the parameter. 
 
-Symbol
+```cpp
+#include <iostream>
+#include <iomanip>
 
-Operator
+using namespace std;
+int main()
+{
+  float profits = 300.75;
+  cout << profits << endl;
+  cout << fixed << setprecision(1) << profits << endl;
+}
+>>> 300.75
+>>> 300.8
+```
+`showpoint` is used to display values with decimal points, even if it is a zero. It displays decimal points to match the precision of the stream, set by `setprecision`. 
 
-Definition
+```cpp
+#include <iostream>
+#include <iomanip>
 
-Example
-
-== 
-
-Equal To 
-
-If the values of two operands are equal, then the condition becomes true.
-
-(a == b) is not true.
-
-!= 
-
-Not Equal To
-
-If values of two operands are not equal, then condition becomes true.
-
-(a != b) is true.
-
->
-
-Greater Than
-
-If the value of left operand is greater than the value of right operand, then condition becomes true.
-
-(a > b) is not true.
-
-<
-
-Less Than
-
-If the value of left operand is less than the value of right operand, then condition becomes true.
-
-(a < b) is true.
-
->=
-
-Greater Than or Equal To
-
-If the value of left operand is greater than or equal to the value of right operand, then condition becomes true.
-
-(a >= b) is not true.
-
-<=
-
-Less Than or Equal To
-
-If the value of left operand is less than or equal to the value of right operand, then condition becomes true.
-
-(a <= b) is true.
-
-  
-
-And these logical operators: 
-
-  
-
-Operator
-
-Definition
-
-Example
-
-and
-
-If both the operands are true then condition becomes true.
-
-True and True → True
-
-or
-
-If any of the two operands are non-zero then condition becomes true.
-
-True or False → True
-
-not
-
-Used to reverse the logical state of its operand.
-
-not (True or False) → False
-
-  
-
-##Control Structures: Loops
-
-  
-
-`while` loops repeat till their `condition` is met, and look like this:
-
-```python
-
-while (condition):  
-repeat_something()
-
-repeat_more()
-
+using namespace std;
+int main()
+{
+  cout << fixed << showpoint << setprecision(3) << 10.0 << endl;
+}
+>>> 10.000
 ```
 
-The logic used in this loop: 
-
-```python
-
-while a < 10:
-
-print(b)
-
-a += c
-
-```
-
-![](https://lh4.googleusercontent.com/XBVKdZkvca4nA4iT-hH31LCOZ31vsWOqd-5Xo4mEjJlNKhroSHVCe4quEFizof7GqmYdA9ZtF5VB_lWrns-HgOerGnTBTxOwrk5Pr5Sstb9JkI07GD684Ean7DU5w2LjStAlohR6)
-
-You can use `break` to end a `while` loop early, or use `continue` to skip the current iteration. 
-
-  
-
-For loops instead iterate through an iterable, such as strings, lists, range(), and others: 
-
-```python
-
-for element in iterable: 
-
-body_of_code()
-
-```
-
-`continue` and `break` behave as normal with `for` loops. 
-
-  
-
-##Lists
-
-  
-
-Lists are ordered collections of items: 
-
-```python
-
-my_list = ["cat", "dog", "bird"]
-
-```
-
-Lists are zero-indexed, meaning you may access the first element using the indexing operator [] with 0. 
-
-While positive indexes start from left to right, negative indexes go from right to left. 
-
-```python
-
-my_list =  ["cat", "dog", "bird"]
-
-print(my_list[-1])
-
->>> bird
-
-```
-
-  
-
-Just like strings, you can slice lists, with similar behavior. 
-
-When a list is sliced, a new one is formed using a part of the original list. List slicing does not mutate the original.
-
-  
-You can slice them like this:  
-```python
-
-list_name[start:end]
-
-```
-
-Remember that start is inclusive, but end is exclusive. 
-
-If you omit either start or end, Python assumes that they are 0 and the end of the list, respectively. 
-
-![](https://lh3.googleusercontent.com/y8_R-45bwK-EjdPJXnshCk7iBDOb0qqVhpQ9jrA1P-LQ1oDPQs4QgVCL_lKIOrjoBc2OXpveEOrEXp4g8d2NuD0MHRvWVuyMGmTBwSWK8v-vlnt07iWN4JTD0MQrcRbKX2fgoV7f)
-
-  
-
-Here's a table of useful list functions: 
-
-  
-
-Function
-
-Usage
-
-Example
-
-len()
-
-Returns the length of the list
-
-len([0, 1, 2]) returns 3
-
-max()
-
-Returns the largest value of the list
-
-max([1, 9, 3]) returns 9
-
-min()
-
-Returns the smallest value of the list
-
-min([1, 9, 3]) returns 1
-
-.pop()
-
-Removes the element at the specified index, then returns it
-
-[1, 2, 3].pop(1) returns 2  
-and changes list to [1, 3]
-
-.append()
-
-Adds the element to the end of the list
-
-[1, 2, 3].append(4) changes list to [1, 2, 3, 4]
-
-.sort()
-
-Sorts the list from least to greatest
-
-[5, 6, 2].sort() changes list to [2, 5, 6] 
-
-  
-
-Lists can also contain lists, creating multi-dimensional lists: 
-
-```python
-
-tic_tac_toe = [['X', 'O', 'X'], 
-
-['X', '  ', 'O],
-
-['O', 'X', 'O']]
-
-```
-
-  
-
-##Functions
-
-You can declare your own functions like this: 
-
-```python
-
-def func (params):  
-instructions 
-
-```
-
-When you want to call it, simply use its name followed by its parameters. 
-
-You can also assign default parameters that are optional. 
-
-```python
-
-def greet_me(name, times = 1, greeting = "Good Morning"):
-
- for i in range(0, times):
-
- print(f"{greeting}, {name}!"
-
-  
-
-greet_me("Sam", greeting = "Hello") # times still defaults to 1
-
-  
-
->>> Hello, Sam!
-
-```
-
-When we pass arguments to a function, we do it in two ways:
-
-Integers, floats, booleans, and strings are primitive in Python. This means that when we pass them to a function, the function receives a copy of the value. When we change the value inside the function, the original variable is not affected. 
-
-However, non-primitive types (everything else) are passed a reference to the object, meaning those changes will affect the original variable. 
-
-![](https://lh6.googleusercontent.com/Lk5F8ZRTPgbkIB0v_zMaFlr1iA_OifKTDlFpyjrAAJvMuxCgKvjdnttCEcP4WGT-kc4HAr5zyyoGLUzEEVUehqYMr9GhDh_QAcSV1Jpf3yNuXndkN2hITie6y-IW1JFB7fyjkVqg)**
