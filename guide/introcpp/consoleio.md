@@ -2,13 +2,12 @@
 slides: "https://docs.google.com/presentation/d/1J0pUWwxsIJ1Pxh1d-EgvaHlGkCMP_uNuGILs0ad8fQ4"
 handout: "https://docs.google.com/document/d/1fEfj07RpwxujAVu655gVwjYY1_v7wTpa3szjM7Hp30c"
 ---
-# Console Input/Output
 
 Every program you will write will take some form of input, and then give you back some output. In this lesson, you will learn how to take input and output information through the console. 
 
 You've already learned some of this - in your first ever program, you outputted the text Hello World to the console. Now, you'll learn more of what exactly cout does along with how to C++ handles console input.
 
-## Console Output
+# Console Output
 
 You've learned plenty of data types in the previous lesson, [variables](https://guide.returnstem.org/introcpp/variables?).
 These data types can represent a variety of different numbers and other useful values, but they don't represent a really important type of data. All text, which can include characters (letters), words, sentences, and paragraphs, can be represented using strings. Strings are identified by double quotes surrounding them, and can contain any characters.  
@@ -21,7 +20,7 @@ When you want to output text to the console, you will need to make it a string.
 
 If you don't include it as a string, C++ will think they are other variables and your code will not compile. 
 
-## The `String` class
+# The `String` class
 
 Strings can be defined like other data types, like this:
 ```cpp
@@ -48,7 +47,7 @@ string s;
 
 If you don't want to initialize it yet. 
 
-## Escape Characters
+# Escape Characters
 
 Notice that because we open and close strings with `"`, when we want to use the `"` character in our strings, C++ will think you are making two strings, like this:
 
@@ -71,8 +70,8 @@ int main()
     cout << "Hello \nWorld";
 }
 
->>>Hello
->>>World
+>>> Hello
+>>> World
 ```
 
 
@@ -92,7 +91,7 @@ Common escape characters:
 | `\\` | Outputs a back slash | 
 | `\?` | Outputs a question mark |
 
-## The `cin` statement
+# The `cin` statement
 
 Now that we have gone over outputting something to the console for the user to see, we will learn how to take an input from a user. The object cin is used for this task. It takes an input entered in the console, and stores it in a variable. We use the `>>` operator to between the variable name and the cin statement. 
 
@@ -120,7 +119,6 @@ int main()
     cin >> age;
     cout << "You are " << age << " years old. " << endl;
 }
-
 ```
 
 When run, this code will prompt the user for their name. Notice that it does not print what comes after it till you give it input. 
@@ -145,14 +143,14 @@ int main()
 When taking in multiple variables of input, the user can either enter data like
 
 ```cpp
->> 8
->> 24
+>>> 8
+>>> 24
 ```
 
 or
 
 ```cpp
->> 8 24
+>>> 8 24
 ```
 
 `cin` will separate different inputs with spaces or newlines (pressing `Enter`), but it will only take in what you have typed into the console after you press your `Enter` key.
@@ -175,11 +173,11 @@ int main()
 }
 ```
 
-## Input Stream Buffer
+# Input Stream Buffer
 
 To really understand how `cin` works, we have to look at what is really happening with what you type into the keyboard. Take for example if I type `my input` and then hit enter on my keyboard. Regardless of what the variable that you are taking the console input into, all of what you just entered goes into something called a `buffer`. A `buffer` is just a bunch of memory locations which holds information (`char`) . We can refer to the `buffer` that `cin` has as the **input stream buffer**. Let's look at how the buffer might look.
 
-![](introcpp/consoleio/buffer1.png)
+![](consoleio/buffer1.png)
 
 We use the arrow to show where the buffer is at and the current position which is sort of like where your cursor is. When we `cin` different data types, it moves character by character to store the information into the variable. Where it stops depends on the data type. However, some things remain consistent: 
 + All whitespace and `\n` characters preceding the input will be ignored
@@ -209,7 +207,7 @@ Depending on what the type of the variable you want to test, change the text whi
 
 We will later go into specifics on manipulating the input stream buffer.
 
-## I/O Manipulation
+# I/O Manipulation
 
 The basic format of the cin statement isn’t always useful because we might want to receive the input in other ways. For this reason, there are many functions in C++ that help with this. A function is a piece of code that can take inputs and run some code based on that. We will learn more about functions and how to create your own functions in a later lesson.
 
@@ -227,8 +225,8 @@ int main()
 	cout << "This is the sentence you inputted: \"" << sentence << "\"" << endl;
 }
 
->> This is my sentence.
->> This is the sentence you inputted: "This"
+>>> This is my sentence.
+>>> This is the sentence you inputted: "This"
 ```
 
 Remember how before we said that you could input the values for multiple variables in one line by separating them with a space, and then it takes them all in when you press enter. That's what happened just now, and since "this" and "is" were separated by a space, `cin` thinks they should go into separate variables.
@@ -255,8 +253,8 @@ int main()
 	cout << "This is the sentence you inputted: \"" << sentence << "\"" << endl;
 }
 
->> This is my sentence.
->> This is the sentence you inputted: "This is my sentence."
+>>> This is my sentence.
+>>> This is the sentence you inputted: "This is my sentence."
 ```
 
 `cin.ignore(n, ch)` is used to ignore characters in an inputted string until either n characters have been read or a certain character (ch) has been read (whatever comes first). 
@@ -345,7 +343,7 @@ int main()
 When you enter a string into this program, such as the word "Green", `cin` raises an error at the first character. Then, when you `cin.clear()` it, it clears the error state. Then, we `cin.ignore(INT_MAX, '\n')` to remove the rest of the bad input stored inside the buffer.
 The following `cin` statement works properly. 
 
-## Input Stream Manipulation Functions
+# Input Stream Manipulation Functions
 
 >Any `cin` or related function that requires an input will wait for console input if there is nothing in the input stream buffer. If there is anything in the buffer, the program will continue on without waiting for user input.
 
@@ -362,8 +360,8 @@ int main()
   cout << "output: " << temp << endl;
 }
 
->> test
->> output: t
+>>> test
+>>> output: t
 ```
 
 `cin.putback(ch)` will put the inputted character `ch` at the current position of the input stream buffer such that it moves anything that would be in front of the current position forward one spot. An example of this and the I/O is:
@@ -383,8 +381,8 @@ int main()
 	cout << var1 << " " << var2 << " " << buf << endl;
 }
 
->> test
->> t X est
+>>> test
+>>> t X est
 ```
 
 `cin.peek()` will output the value of the character at the current position of the buffer. You must set this function to the `char` variable where you want to store that character. The difference between `cin.peek` and `cin.get` is that it does not move the buffer to the next position. 
@@ -402,11 +400,11 @@ int main()
 	cout << var1 << " " << var2 << " " << var3 << endl;
 }
 
->> test
->> t e e
+>>> test
+>>> t e e
 ```
 
-## `<iomanip>`
+# `<iomanip>`
 
 Before you use any of the following tools, remember to include the `<iomanip>` library, like this: 
 ```cpp
@@ -482,9 +480,9 @@ int main()
   cout << "60" << endl;
 }
 
->>>60
->>>        60
->>>   60
+>>> 60
+>>>         60
+>>>    60
 ```
 You can alter the fill character that `setw` uses by using `setfill(char)`. For example, 
 
@@ -502,7 +500,7 @@ int main()
   cout << setw(5);
   cout << "60" << endl;
 }
->>>60
->>>xxxxxxxx60
->>>xxx60
+>>> 60
+>>> xxxxxxxx60
+>>> xxx60
 ```
