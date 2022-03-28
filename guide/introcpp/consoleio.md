@@ -1,8 +1,6 @@
 ---
-slides:
-""
-handout:
-""
+slides: "https://docs.google.com/presentation/d/1J0pUWwxsIJ1Pxh1d-EgvaHlGkCMP_uNuGILs0ad8fQ4"
+handout: "https://docs.google.com/document/d/1fEfj07RpwxujAVu655gVwjYY1_v7wTpa3szjM7Hp30c"
 ---
 # Console Input/Output
 
@@ -204,7 +202,7 @@ Remember how before we said that you could input the values for multiple variabl
 
 Now, we clearly didn't give `cin` more than one variable to put our data into. So shouldn't `cin` be smart enough to realize what we are trying to do and just put it all in the sentence variable? Well, we have to understand that `cin` isn't programmed to work like that.
 
-%%TODO go on to more detailed information about the input buffer, etc%%
+This is because `cin` stops reading at a whitespace. In this case, it's the first space in the sentence, meaning it will only take in the first word of the sentence that we give it. 
 
 The solution to the aforementioned problem is the function `getline(cin, str)`. Functions are ways to call code that can take inputs and give outputs. We will learn more about them and how to create them in a later lesson. For now, just know that we write them like `nameOfFunction(input1, input2)`. We could have no inputs in the parenthesis, or how man ever we need depending on the function. In the case of `getline`, it takes two inputs, the `cin` object and a string variable to write the input to. 
 
@@ -230,13 +228,103 @@ int main()
 
 Another function similar to `getline` is the `cin.peek()` function. Instead of moving through the input stream and storing characters in variables, the function just peeks at the next character and stores it in a variable. Since the function doesn’t move through the input stream, using the `cin.peek()` function multiple times won’t move through the characters, it will just stay at the next character. Another important thing to remember is that this function doesn’t accept any parameter. However, you have to store the returned (outputted) character in a `char` variable: `char ch = cin.peek()`.
 
-%%TODO example of cin.peek()%%
+```cpp
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+int main()
+{
+    char v1, v2, v3;
+    v1 = cin.get();
+    v2 = cin.get();
+    v3 = cin.get();
+    cout << "v1: " << v1 << " v2: " << v2 << " v3: " << v3;
+}
+```
 
 `cin.ignore(n, ch)` is used to ignore characters in an inputted string until either n characters have been read or a certain character (ch) has been read (whatever comes first). 
 
-%%TODO explanation of phantom newline problem and use of cin.ignore() to solve it%%
+`cin` and `getline` read input in slightly different ways. When you use both of them in your program, you may run into something called the "Phantom newline" problem. Unlike `getline`, cin reads till the newline character (`\n`). When `getline` is used after `cin`, it consumes the `\n` character that `cin` left behind, causing it to read nothing. 
 
-%%TODO explain cin.fail() and cin.clear()%%
+Here's an example of this happening:
+```cpp
+#include <iostream>
+
+using namespace std;
+int main()
+{
+    string first, last;
+    cout << "Enter your first name: ";
+    cin >> first;
+    cout << "Enter your last name: ";
+    getline(cin, last);
+    cout << "Your name is " << first << " " << last;
+}
+```
+
+If you run this code, you will find that the program will ask for your first name, then skip past the prompt for your last name and directly output just your first name. To solve this problem, we can use `cin.ignore`. 
+The syntax looks like this:
+`cin.ignore(INT_MAX, char)`
+In our case, because a `\n` character is left in the input stream buffer, we want C++ to ignore it. Our problem can be solved like this: 
+```cpp
+#include <iostream>
+#include <limits.h>
+
+using namespace std;
+int main()
+{
+    string first, last;
+    cout << "Enter your first name: ";
+    cin >> first;
+    cout << "Enter your last name: ";
+    cin.ignore(INT_MAX, '\n');
+    getline(cin, last);
+    cout << "Your name is " << first << " " << last;
+}
+```
+The first value we gave the function tells it how long it should look for the target character before it stops. In our case, we choose to use `INT_MAX`, the largest value an integer can hold in C++. In order to use that value, we need to `#include <limits.h>`. We then include a `\n` character as the second value we give the function, telling it to ignore `\n`. 
+
+Before we described an error that occurs when you input a `string` when the `cin` asks for an integer. This causes the `cin` to fail. If we'd like to know when this happens, we can use `cin.fail()`. `cin.fail()` returns a boolean (a value that is either true or false). It returns 1 when there was an error, and 0 where there was no error. 
+(In this example, we use something called `boolalpha` to make the boolean display `true` or `false`, instead of `1` or `0`. Later on, you'll be able to use this to your advantage more easily with `if` statements.)
+
+```cpp
+#include <iostream>
+#include <limits.h>
+
+using namespace std;
+int main()
+{
+    int input;
+    cin >> input;
+    cout << boolalpha << cin.fail();
+}
+```
+
+If we input an integer, it displays `false`. However, if we input any other data type, it returns `true`. 
+
+When an error occurs with `cin`, it raises an error flag, which makes future I/O operations work incorrectly. We can fix this issue with `cin.clear()`:
+```cpp
+#include <iostream>
+#include <limits.h>
+
+using namespace std;
+int main()
+{
+  int input, input2;
+  cout << "Enter a string: ";
+  cin >> input;
+  cout << "Input failed: " << boolalpha << cin.fail() << endl;
+  cin.clear();
+  cin.ignore(INT_MAX, '\n');
+  cout << "Enter a number: ";
+  cin >> input2;
+  cout << "Your number is " << input2 << endl;
+}
+```
+
+When you enter a string into this program, such as the word "Green", `cin` raises an error at the first character. Then, when you `cin.clear()` it, it clears the error state. Then, we `cin.ignore(INT_MAX, '\n')` to remove the rest of the bad input stored inside the buffer.
+The following `cin` statement works properly. 
 
 ## `<iomanip>`
 
@@ -297,5 +385,44 @@ int main()
 >>> 10.000
 ```
 
-%%TODO explain setw%%
-%%TODO explain setfill%%
+Sometimes, we want to format the output that we display, since it is of varying widths. When we want to do this, we can use `setw(n)`. 
+The width of the stream is then set to n, and it will fill the additional spaces needed with spaces ` `. 
+```cpp
+#include <iostream>
+#include <limits.h>
+#include <iomanip>
+
+using namespace std;
+int main()
+{
+  cout << "60" << endl;
+  cout << setw(10);
+  cout << "60" << endl;
+  cout << setw(5);
+  cout << "60" << endl;
+}
+
+>>>60
+>>>        60
+>>>   60
+```
+You can alter the fill character that `setw` uses by using `setfill(ch)`. For example, 
+
+```cpp
+#include <iostream>
+#include <limits.h>
+#include <iomanip>
+
+using namespace std;
+int main()
+{
+  cout << "60" << endl;
+  cout << setfill('x') << setw(10);
+  cout << "60" << endl;
+  cout << setw(5);
+  cout << "60" << endl;
+}
+>>>60
+>>>xxxxxxxx60
+>>>xxx60
+```
