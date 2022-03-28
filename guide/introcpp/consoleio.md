@@ -7,7 +7,7 @@ You've already learned some of this - in your first ever program, you outputted 
 
 ## Console Output
 
-You've learned plenty of data types in the previous lesson [link to lesson 2].
+You've learned plenty of data types in the previous lesson, [variables](https://guide.returnstem.org/introcpp/variables?).
 These data types can represent a variety of different numbers and other useful values, but they don't represent a really important type of data. All text, which can include characters (letters), words, sentences, and paragraphs, can be represented using strings. Strings are identified by double quotes surrounding them, and can contain any characters.  
 For example, a string might look like this: 
 
@@ -23,6 +23,11 @@ Strings can be defined like other data types, like this:
 ```cpp
 string str1;
 ```
+However, you must include the string header file to do this, just like <iostream>.
+```cpp
+#include <iostream>
+#include <string>
+```
 You can define strings in different ways:
 ```cpp
 string s = "a string";
@@ -35,12 +40,12 @@ If you don't want to define it yet.
 
 ## Escape Characters
 
-Notice that because we open and close strings with ", when we want to use the " character in our strings, C++ will think you are making two strings, like this:
+Notice that because we open and close strings with `"`, when we want to use the `"` character in our strings, C++ will think you are making two strings, like this:
 ```cpp
 cout << "Mary said, "hello everyone" on tuesday";
 ```
 
-Thankfully, we can use escape characters to tell C++ that our quotes (") are not part of declaring the string. 
+Thankfully, we can use escape characters to tell C++ that our quotes `"` are not part of declaring the string. 
 When we use the backslash character, `\`, followed by another, C++ considers at as one escape character. 
 To use quotes in your string, for example, you would use `\"`. 
 
@@ -71,11 +76,11 @@ cout<<”\”May the Force be with you\””;
 Common escape characters: 
 | Escape character | Function | 
 | --- | --- | 
-| \n | Outputs a newline | 
-| \t | Outputs a tab | 
-| \’ | Outputs a single quotation mark | 
-| \” | Outputs a double quotation mark | 
-| \\ | Outputs a slash | 
+| `\n` | Outputs a newline | 
+| `\t` | Outputs a tab | 
+| `\’` | Outputs a single quotation mark | 
+| `\”` | Outputs a double quotation mark | 
+| `\\` | Outputs a slash | 
 
 
 
@@ -88,7 +93,7 @@ Notice that for cin, we use >> operators, while for cout we use <<.
 int age;
 cin >> age;
 ```
-When using cin, the user will be prompted to give input on the console. You may type anything into it, and submit your input by pressing ENTER or RETURN. 
+When using cin, the user will be prompted to give input on the console. You may type anything into it, and submit your input by pressing `Enter` or `Return`. 
 
 Consider the following code: 
 
@@ -169,7 +174,7 @@ int main()
 ```
 If the user inputs their full name (something like "John Smith"), only "John" will be stored inside `name`. This is because cin stops reading input after a space. 
 
-However, `getline` stops at a new line, or when you press ENTER on your keyboard.
+However, `getline` stops at a new line, or when you press `Enter` on your keyboard.
 
 The same program using getline would look like this:
 ```cpp
