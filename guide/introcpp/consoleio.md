@@ -34,7 +34,7 @@ string s = "a string";
 ```
 Or simply,
 ```cpp
-string s
+string s;
 ```
 If you don't want to define it yet. 
 
@@ -71,7 +71,7 @@ Similarly, `\t` is a tab character, which moves the text to the next tab positio
 
 Finally, if we want to use the \ character in a string, we can use two of them in a row: `\\`. 
 ```cpp
-cout<<”\”May the Force be with you\””;
+cout << "\"May the Force be with you\"";
 ```
 Common escape characters: 
 | Escape character | Function | 
