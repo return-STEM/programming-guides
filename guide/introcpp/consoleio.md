@@ -175,6 +175,39 @@ int main()
 }
 ```
 
+## Input Stream Buffer
+
+To really understand how `cin` works, we have to look at what is really happening with what you type into the keyboard. Take for example if I type `my input` and then hit enter on my keyboard. Regardless of what the variable that you are taking the console input into, all of what you just entered goes into something called a `buffer`. A `buffer` is just a bunch of memory locations which holds information (`char`) . We can refer to the `buffer` that `cin` has as the **input stream buffer**. Let's look at how the buffer might look.
+
+![](introcpp/consoleio/buffer1.png)
+
+We use the arrow to show where the buffer is at and the current position which is sort of like where your cursor is. When we `cin` different data types, it moves character by character to store the information into the variable. Where it stops depends on the data type. However, some things remain consistent: 
++ All whitespace and `\n` characters preceding the input will be ignored
++ After encountering a character, input stops at the next whitespace/`\n` character
+
+Let's consider how C++ handles input for different data types. To look and figure out for your own, use the following code
+
+```cpp
+#include <iostream>
+
+using namespace std;
+int main()
+{
+	type myVar;
+	string buf;
+	cin >> myVar >> buf;
+	cout << myVar << " " << buf << endl;
+}
+```
+
+Depending on what the type of the variable you want to test, change the text which says type in the code accordingly. If we were to use different variables, we would notice that:
++ Integers stop taking input after the first non number character (excluding a negative sign at the beginning)
++ Floats/doubles stop taking input after the first non number characters, but also allow a single decimal point between the numbers (decimal points after the first will stop input, and a negative sign is accepted at the beginning)
++ Booleans take input until the first non number character, but will fail if the input is not zero/one
++ Chars take a single character of input
++ Strings take all character input
+
+We will later go into specifics on manipulating the input stream buffer.
 
 ## I/O Manipulation
 
@@ -226,28 +259,12 @@ int main()
 >> This is the sentence you inputted: "This is my sentence."
 ```
 
-Another function similar to `getline` is the `cin.peek()` function. Instead of moving through the input stream and storing characters in variables, the function just peeks at the next character and stores it in a variable. Since the function doesn’t move through the input stream, using the `cin.peek()` function multiple times won’t move through the characters, it will just stay at the next character. Another important thing to remember is that this function doesn’t accept any parameter. However, you have to store the returned (outputted) character in a `char` variable: `char ch = cin.peek()`.
-
-```cpp
-#include <iostream>
-#include <iomanip>
-
-using namespace std;
-int main()
-{
-    char v1, v2, v3;
-    v1 = cin.get();
-    v2 = cin.get();
-    v3 = cin.get();
-    cout << "v1: " << v1 << " v2: " << v2 << " v3: " << v3;
-}
-```
-
 `cin.ignore(n, ch)` is used to ignore characters in an inputted string until either n characters have been read or a certain character (ch) has been read (whatever comes first). 
 
 `cin` and `getline` read input in slightly different ways. When you use both of them in your program, you may run into something called the "Phantom newline" problem. Unlike `getline`, cin reads till the newline character (`\n`). When `getline` is used after `cin`, it consumes the `\n` character that `cin` left behind, causing it to read nothing. 
 
 Here's an example of this happening:
+
 ```cpp
 #include <iostream>
 
@@ -263,10 +280,10 @@ int main()
 }
 ```
 
-If you run this code, you will find that the program will ask for your first name, then skip past the prompt for your last name and directly output just your first name. To solve this problem, we can use `cin.ignore`. 
-The syntax looks like this:
-`cin.ignore(INT_MAX, char)`
+If you run this code, you will find that the program will ask for your first name, then skip past the prompt for your last name and directly output just your first name. To solve this problem, we can use `cin.ignore`.  The syntax looks like this: `cin.ignore(INT_MAX, char)`
+
 In our case, because a `\n` character is left in the input stream buffer, we want C++ to ignore it. Our problem can be solved like this: 
+
 ```cpp
 #include <iostream>
 #include <limits.h>
@@ -283,6 +300,7 @@ int main()
     cout << "Your name is " << first << " " << last;
 }
 ```
+
 The first value we gave the function tells it how long it should look for the target character before it stops. In our case, we choose to use `INT_MAX`, the largest value an integer can hold in C++. In order to use that value, we need to `#include <limits.h>`. We then include a `\n` character as the second value we give the function, telling it to ignore `\n`. 
 
 Before we described an error that occurs when you input a `string` when the `cin` asks for an integer. This causes the `cin` to fail. If we'd like to know when this happens, we can use `cin.fail()`. `cin.fail()` returns a boolean (a value that is either true or false). It returns 1 when there was an error, and 0 where there was no error. 
@@ -304,6 +322,7 @@ int main()
 If we input an integer, it displays `false`. However, if we input any other data type, it returns `true`. 
 
 When an error occurs with `cin`, it raises an error flag, which makes future I/O operations work incorrectly. We can fix this issue with `cin.clear()`:
+
 ```cpp
 #include <iostream>
 #include <limits.h>
@@ -325,6 +344,67 @@ int main()
 
 When you enter a string into this program, such as the word "Green", `cin` raises an error at the first character. Then, when you `cin.clear()` it, it clears the error state. Then, we `cin.ignore(INT_MAX, '\n')` to remove the rest of the bad input stored inside the buffer.
 The following `cin` statement works properly. 
+
+## Input Stream Manipulation Functions
+
+>Any `cin` or related function that requires an input will wait for console input if there is nothing in the input stream buffer. If there is anything in the buffer, the program will continue on without waiting for user input.
+
+`cin.get(ch)` will give the value of the character at the current position in the buffer and store it in the input variable `ch`  and move the position to the next spot. So if we had the following code, that would be the resulting I/O.
+
+```cpp
+#include <iostream>
+
+using namespace std;
+int main()
+{
+  char temp;
+  cin.get(temp);
+  cout << "output: " << temp << endl;
+}
+
+>> test
+>> output: t
+```
+
+`cin.putback(ch)` will put the inputted character `ch` at the current position of the input stream buffer such that it moves anything that would be in front of the current position forward one spot. An example of this and the I/O is:
+
+```cpp
+#include <iostream>
+
+using namespace std;
+int main()
+{
+	char var1, var2;
+	string buf;
+	cin.get(var1);
+	cin.putback('X');
+	cin.get(var2);
+	cin >> buf;
+	cout << var1 << " " << var2 << " " << buf << endl;
+}
+
+>> test
+>> t X est
+```
+
+`cin.peek()` will output the value of the character at the current position of the buffer. You must set this function to the `char` variable where you want to store that character. The difference between `cin.peek` and `cin.get` is that it does not move the buffer to the next position. 
+
+```cpp
+#include <iostream>
+
+using namespace std;
+int main()
+{
+	char var1, var2, var3;
+	cin.get(var1);
+	var2 = cin.peek();
+	cin.get(var3);
+	cout << var1 << " " << var2 << " " << var3 << endl;
+}
+
+>> test
+>> t e e
+```
 
 ## `<iomanip>`
 
@@ -406,7 +486,7 @@ int main()
 >>>        60
 >>>   60
 ```
-You can alter the fill character that `setw` uses by using `setfill(ch)`. For example, 
+You can alter the fill character that `setw` uses by using `setfill(char)`. For example, 
 
 ```cpp
 #include <iostream>
