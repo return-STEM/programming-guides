@@ -76,7 +76,6 @@ long_str = """This is a string with triple quotes. As you can see, even though t
 It still displays newlines.
 
 You can \
-
 ignore new lines with the \\ character. """
 
 print(long_str)
@@ -87,6 +86,7 @@ It still displays newlines.
 You can ignore newlines with the \ character.
 ```
 
+On line 4 of the output, note that we use `\` to ignore the auto new line. This can be used if we want a line break in our code, but not in our output.
 
 ## Long Comments (Using Triple Quotes)
 
@@ -152,7 +152,7 @@ input()
 
 ## Using `input()`
 
-Basically, `input()` looks like this:
+The syntax for `input()` looks like this:
 
 `var_name = input("Prompt text")`
 
@@ -413,11 +413,11 @@ There are also other escape characters using the `\` key:
 | Escape character | Function | Example | 
 | --- | --- | --- |
 | `\n` | Starts a new line | print("Hello\nWorld")<br /><br />> Hello<br />> World |
-| `\b` | Backspace | print("Hello \bWorld")<br /><br />> HelloWorld |
-| `\t` | Works like a tab | print("Hello\tWorld")<br /><br />> Hello    World |
-| `\\` | Acts as a regular backslash | print("Ok\\")<br /><br />> Ok\ |
-| `\'` | Acts as a regular single quote (apostrophe) | print('Rob\'s World')<br /><br />> Rob’s World |
-| `\"` | Acts as a regular double quote | print("He said \"try to\"")<br /><br />> He said "try to" |
+| `\b` | Backspace | print("Hello \\bWorld")<br /><br />> HelloWorld |
+| `\t` | Works like a tab | print("Hello\\tWorld")<br /><br />> Hello    World |
+| `\\` | Acts as a regular backslash | print("Ok\\\\")<br /><br />> Ok\\ |
+| `\'` | Acts as a regular single quote (apostrophe) | print('Rob\\'s World')<br /><br />> Rob’s World |
+| `\"` | Acts as a regular double quote | print("He said \\"try to\\"")<br /><br />> He said "try to" |
 
 # Methods
 The `print()` and `input()` functions we've gone over are called  __builtin__  functions
@@ -458,7 +458,6 @@ print(a)
 Method | Description | Example
 ----| ----|----
 | .upper()<br />.lower() | Converts a string to uppercase or lowercase | x = "Hello World"<br />print(x.upper())<br />print(x.lower())<br /><br />>>> HELLO WORLD<br />>>> hello world |
-| :-: | :-: | :-: |
 | .replace(original phrase, new phrase) | Replaces the original phrase in a string with a new phrase | x = "Hello World"<br />print(x.replace("World", "People"))<br /><br />>>> Hello People |
 | .capitalize() | Capitalizes the first letter of the string | x = "hello, friend."<br />print(x.capitalize())<br /><br />>>> Hello, friend. |
 | .isdigit() | Returns a boolean that signifies whether all characters in the string are digits (0 to 9) | x = "1000"<br />print(x.isdigit())<br /><br />>>> True |
