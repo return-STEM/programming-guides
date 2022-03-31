@@ -1,6 +1,6 @@
 # Defining a Class
 Classes are the basis of Object-Oriented Programming or OOP, and allow a user to store data and functions unique to a real-world object. Using classes, you can do things such as create objects and perform operations on them using functions built into the class. 
-In the above example, any methods built into the Food class can be done to any of the objects. For example, if a Slice method was created in the Food class, this could be done to any of the objects. Methods that are built into classes can also accept parameters and can return values just like functions. 
+In this lesson, you will learn how to define your own classes. 
 # Syntax
 Remember that classes contain variables and methods, which determine how the class interacts with other classes.
 Classes are defined like this: 
@@ -32,14 +32,21 @@ In this example, we create a new class called Python and give it several attribu
 Notice that `species` and `common_name` are defined outside of the initiator class. This is because all pythons have these attributes. However, `name` and `age` are defined inside the initiator, because they may vary from python to python (Not all pythons are the same age, and not every python will be called the same name). 
 
 To define an object of a class, you must put the name of the object and set it equal to the class name followed by parentheses with the parameters. Parameters are only given if the class has an initiator with parameters, and the parameters go in the parentheses. The format is as the following:
-`Object = ClassName(parameter)`
+
+```python
+Object = ClassName(parameter)
+```
 
 For example, to define an object of the Python class above:
 `Monty = Python(‘Monty’, 14)`
 The name would be ‘Monty’, and the age would be 14. To use a method you need to use the object’s name followed by a period and the name of the method. 
 The format is as the following:
-`Monty.hiss()`
-`Output: ‘hisss’`
+```python
+Monty.hiss()
+```
+```
+>>> hissss
+```
 
 Methods are defined the same way functions are defined, but they need to be one indent away from the definition of the class. 
 Notice that all methods, even those that do not take other parameters, take the parameter `self`. `self` represents the instance of the class, and allows its methods to access its attributes and methods. `self` doesn't necessarily need to be called `self`, but it must be the first parameter of the methods. Generally, we call it `self` by convention. 
