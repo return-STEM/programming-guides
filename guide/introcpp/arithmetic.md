@@ -1,8 +1,6 @@
 ---
-slides:
-""
-handout:
-""
+slides: "https://docs.google.com/presentation/d/18tJP-a-T0aGo5GgV9SkOTif_YMraTAVB2UMgCUEICc8"
+handout: "https://docs.google.com/document/d/1VZTrFJe_k7Inn1Sh844azjMc-RKHgUEvLSM_8GgBuhU"
 ---
 
 # Why do we need them?
@@ -318,10 +316,10 @@ This list below goes over the precedence different operators we have learned.
 
 | Precedence | Operator | Description | Associativity |
 | --- | --- | --- | --- |
-| 2 | ++ <br> -- <br> () <br> (type) <br> function() | post-increment <br> post-decrememnt <br> parentheses <br> type cast <br> function call | left to right |
-| 3 | ++ <br> -- | pre-increment <br> pre-decrement | right to left |
-| 5 | * <br> / <br> % | multiplication <br> division <br> modulus | left to right |
-| 6 | + <br> - | addition <br> subtraction | left to right|
+| 2 | `++` <br> `--` <br> `()` <br> `(type)` <br> `function()` | post-increment <br> post-decrememnt <br> parentheses <br> type cast <br> function call | left to right |
+| 3 | `++` <br> `--` | pre-increment <br> pre-decrement | right to left |
+| 5 | `*` <br> `/` <br> `%` | multiplication <br> division <br> modulus | left to right |
+| 6 | `+` <br> `-` | addition <br> subtraction | left to right|
 
 You might have noticed that some levels are missing. That's okay, because we'll slowly fill this up with more operators as we learn more.
 
@@ -374,5 +372,31 @@ One thing to keep in mind is that these functions still return floating point va
 
 ## `abs` and `fabs`
 
-If you wanted to find the absolute value of an integer value, you can use `abs(num)` and if you wanted to find the absolute value of a floating point value, you can use `fabs(num)`. 
+The absolute value of a number is its distance to zero. The absolute value of a positive number is the same as its value, and the absolute value of a negative number is just that number without the minus symbol. For example, the absolute value of 8 is still 8, but the absolute value of -3 is 3. 
+If you want to find the absolute value of an integer value, you can use `abs(num)`.  If you want to find the absolute value of a floating point value, you can use `fabs(num)`. 
+
+```cpp
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+int main()
+{
+	int num1;
+	float num2;
+	cout << "Enter an integer: ";
+	cin >> num1;
+	cout << "Absolute value of the integer: " << abs(num1) << endl;
+	cout << "Enter a float: ";
+	cin >> num2;
+	cout << "Absolute value of the float: " << fabs(num2) << endl;
+}
+
+
+>>> Enter an integer: -4
+>>> Absolute value of the integer: 4
+>>> Enter a float: -3.14
+>>> Absolute value of the float: 3.14
+```
+
 
