@@ -9,11 +9,11 @@ Arithmetic is a fancy way of saying “math”. We use arithmetic every day!
 
 Calculating the total amount needed to pay at a restaurant, the amount of tax or tip on an item, figuring out distance from two places - these are just some of the ways in which we use math daily.
 
-Schoolchildren of various ages use math daily – it’s a part of their curriculum. Such math may be easy to do without the help of a program. However, at times it can get repetitive. The math might just take a really long time to do by hand.
+Students of various ages use math daily – it’s a part of their curriculum. Such math may be easy to do without the help of a program. However, at times it can get repetitive. The math might just take a really long time to do by hand.
 
-For example, imagine that you are organizing a wedding and eventually decide that four hundred guests will attend. You need to find the total food+drink cost, among others, for **four hundred people**. A small error in one place could ruin the entire calculation. Not only that, it would take a long time. Now obviously, you might say, why don't you use a calculator? 
+For example, imagine that you are organizing a wedding and eventually decide that four hundred guests will attend. You need to find the total cost of the food and drinks, among others, for **four hundred people**. A small error in one place could ruin the entire calculation. Not only that, it would take a long time. Now obviously, you might say, why don't you use a calculator? 
 
-The benefit of programming is that you can code it so that you don't even have to type all the nummbers in for yourself. If the people RSVPing to a wedding did it online, you could load the data into your program and let your program do all the calculations.
+The benefit of programming is that you can code it so that you don't even have to type all the numbers in for yourself. If the people RSVPing to a wedding did it online, you could load the data into your program and let your program do all the calculations.
 
 Nearly every program you write will involve these operators in some way shape or form. C++ even has a few operators that you might not use in regular math, but will come in handy when programming. 
 
@@ -114,7 +114,7 @@ int main()
 >>> 0
 ```
 
-Congratulations, you just wrote four expressions with literals and an operator. All of this looks good, except the last one. We wrote `1 / 4`, but got an output of 0. How can this be? If I enter it in a calculator, I get `0.25`. What we need to understand is C++ operators handle things differently when you use different `types`.  Previously, we dealt with variables having types. However, we set them equal to literals. These literals thus have a type. In the example above, all of the literals have a type of `int` . An expression containing only integers will result in an answer that is an integer. 
+You just wrote four expressions with literals and an operator. All of this looks good, except the last one. We wrote `1 / 4`, but got an output of 0. How can this be? If I enter it in a calculator, I get `0.25`. What we need to understand is C++ operators handle things differently when you use different `types`.  Previously, we dealt with variables having types. However, we set them equal to literals. These literals thus have a type. In the example above, all of the literals have a type of `int` . An expression containing only integers will result in an answer that is an integer. 
 
 This type of division has a special name: `integer division`. To do integer division in your head, think of what the value would actually be, and then throw out whatever is after the decimal place. In this case, you would get 0.25, and when you throw away what ever is after the decimal point, you are left with zero which is exactly what we got. 
 
@@ -200,7 +200,7 @@ int main()
 
 If the two numbers divide evenly, we get what we want. However, if they don't, we still get an integer output since the expression only contains integers. There are many ways of solving this. For example, instead of storing the inputs as integers, we could store them as floats. We could even rewrite `v1 / v2 * 1.0` to get the answer as a float. 
 
-However, C++ offers another solution which is extremely powerful. C++ allows us to cast the integer to a different type. We use one of the two syntaxes : `type(var)` or `(type)var`. So  we could rewrite v1 as `float(v1)` or `(float)v1`. We can see these both work with the following program: 
+However, C++ offers another solution which is extremely powerful. C++ allows us to cast the integer to a different type. We use one of the two syntaxes : `type(var)` or `(type)var`. So, we could rewrite v1 as `float(v1)` or `(float)v1`. We can see these both work with the following program: 
 
 ```cpp
 #include <iostream>
@@ -220,7 +220,7 @@ int main()
 >>> 7 / 4 = 1.75
 ```
 
-Now, a common mistake might be to write `float(v1 / v2)`. Remember that parentheses are evaluated first, so what happens is `v1 / v2` is evaluated first. So if we input 7 and 4, we would get 7 / 4 = 1, and then cast the 1 into a float. 
+A common mistake might be to write `float(v1 / v2)`. Remember that parentheses are evaluated first, so what happens is `v1 / v2` is evaluated first. So if we input 7 and 4, we would get 7 / 4 = 1, and then cast the 1 into a float. 
 
 We can also cast the other way. We could get a float to an integer. For example, if we had 
 
