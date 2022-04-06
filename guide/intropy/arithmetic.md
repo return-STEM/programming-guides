@@ -40,7 +40,7 @@ For example, `11/4` evaluates to  `2` with a remainder of `3`, or `2.75`. `11/4`
 ### Modulus (`%`)
 Modulus gives the  __remainder__ of a division operation between two integers (whole numbers) or floats. For example, 11 divided by 4 is 2 with a  __remainder of 3__. Therefore, `11 % 4`  __equals 3__. 
 
-![](arithmetic/arithmetic1.png)
+![](arithmetic/arithmetic1-1.png)
 
 Modulus can be used for many different uses, including if a number is even or odd. 
 > When a number is odd, it always has a remainder of 1 when divided by 2. If it is even, its remainder is always 0. 
