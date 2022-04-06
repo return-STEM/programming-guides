@@ -356,11 +356,11 @@ TO find the number of days until another date, you can subtract them, shown in t
 
 import datetime
 
-y=datetime.date(2021,12,25)
+y = datetime.date(2021,12,25)
 
-x=datetime.date.today()
+x = datetime.date.today()
 
-print(y-x)
+print(y - x)
 ```
 
 # Compound Assignment Operators
