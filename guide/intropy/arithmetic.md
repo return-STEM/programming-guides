@@ -57,7 +57,7 @@ This property of numbers will become more useful when you learn if-statements in
 
 ### Exponent  (`**`)
 Exponent raises the power of the left operand to the right operand.
-Three raised to the fifth power equals 243
+Three raised to the fifth power equals 243. In other words, 
 `3 ** 5 = 3 * 3 * 3 * 3 * 3 = 243`
 
 Even though we use `^` in math or other forms of notation, __do not__ use the `^` operator in Python. It doesn't denote exponent, and instead represents the exclusive xor operator, which you learn more about [here](https://en.wikipedia.org/wiki/Exclusive_or)
@@ -334,8 +334,6 @@ import random
 dice = random.randint(1, 6)
 print("The value is:", dice)
 ```
-
-__4. Basic Operations__
 
 # The `datetime` Module
 
