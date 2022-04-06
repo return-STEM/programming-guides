@@ -316,10 +316,10 @@ This list below goes over the precedence different operators we have learned.
 
 | Precedence | Operator | Description | Associativity |
 | --- | --- | --- | --- |
-| 2 | `++` <br> `--` <br> `()` <br> `(type)` <br> `function()` | post-increment <br> post-decrememnt <br> parentheses <br> type cast <br> function call | left to right |
-| 3 | `++` <br> `--` | pre-increment <br> pre-decrement | right to left |
-| 5 | `*` <br> `/` <br> `%` | multiplication <br> division <br> modulus | left to right |
-| 6 | `+` <br> `-` | addition <br> subtraction | left to right|
+| 2 | `++` <br /> `--` <br /> `()` <br /> `(type)` <br /> `function()` | post-increment <br /> post-decrememnt <br /> parentheses <br /> type cast <br /> function call | left to right |
+| 3 | `++` <br /> `--` | pre-increment <br /> pre-decrement | right to left |
+| 5 | `*` <br /> `/` <br /> `%` | multiplication <br /> division <br /> modulus | left to right |
+| 6 | `+` <br /> `-` | addition <br /> subtraction | left to right|
 
 You might have noticed that some levels are missing. That's okay, because we'll slowly fill this up with more operators as we learn more.
 
