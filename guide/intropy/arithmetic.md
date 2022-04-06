@@ -58,12 +58,11 @@ print("The integer is odd: ", bool(parity))
 This property of numbers will become more useful when you learn if-statements in the next lesson. 
 
 ### Exponent  (`**`)
-* Raises the left operand to the power of the right operand
-  * Three raised to the fifth power equals 243
-	* 35 = 243
-  * `3 ** 5` equals 243
-* **Do NOT use ^ to do exponent. ^ is a different operator and means something completely different.**
-* Cannot divide by zero with integer division either
+Exponent raises the power of the left operand to the right operand.
+Three raised to the fifth power equals 243
+`3 ** 5 = 3 * 3 * 3 * 3 * 3 = 243`
+
+Even though we use `^` in math or other forms of notation, __do not__ use the `^` operator in Python. It doesn't denote exponent, and instead represents the exclusive xor operator, which you learn more about (here)[https://en.wikipedia.org/wiki/Exclusive_or]
 
 | Python Syntax | Operation | Math Symbol | Example | Result |
 | :-: | :-: | :-: | :-: | :-: |
@@ -72,8 +71,9 @@ This property of numbers will become more useful when you learn if-statements in
 | `**` | Exponent | Superscript | `5 ** 2` | `25` |
 
 
-## Reference: Arithmetic Operators
-For the table, a is 10 and b is 20
+## Reference Table: Arithmetic Operators
+
+In this example, `a` has the value of 10 and `b` has the value of 20. 
 
 | Symbol | Operator | Definition | Example |
 | :-: | :-: | :-: | :-: |
@@ -85,9 +85,7 @@ For the table, a is 10 and b is 20
 | **  | Exponent | Performs exponential (power) calculation on operators | a ** b = 1020 |
 
 # Rounding floats
-* When casting from a float to an int, the value does not round, it  __truncates__ the decimal is just removed without any rounding. 
-* To properly round, use the `round()` function
-  * `round(number)`
+When casting from a float to an int, the value does not round, it  __truncates__ the decimal is just removed without any rounding. Thankfully, Python has a built-in `round()` function. Put the number you want to round inside the parenthesis. 
 
 ```python
 a = int(3.8) # a is 3
@@ -134,62 +132,61 @@ print("Result:", first, "**", second, "=", result)  # Output Formatting
 
 # Order of Operations
 
-* Python has an order of operations similar to arithmetic:  __P E M/D A/S__
-  * Expressions are evaluated from left to right for each level of PEMDAS
-* P: Items inside  __parenthesis__ will be evaluated first
-* E:  __Exponents__  will then be evaluated
-* MD: Multiplication, division,  __modulus, integer division__  all have the same priority
-* AS: Finally, addition and subtraction is evaluated
+Python has an order of operations similar to arithmetic, which you can remember with the mneumonic __P E M/D A/S__
+Expressions are evaluated from left to right for each level of PEMDAS:
+1. P: Items inside  __parenthesis__ will be evaluated first
+2. E:  __Exponents__  will then be evaluated
+3. MD: Multiplication, division,  __modulus, integer division__  all have the same priority
+4. AS: Finally, addition and subtraction is evaluated
 ## Example
-* Evaluate `3 * 5 ** 2 + (4 + 3 - 2) // 3 % 4`
-  * Parenthesis: `(4 + 3 - 2)`
+Evaluate `3 * 5 ** 2 + (4 + 3 - 2) // 3 % 4`
+1. First, we evaluate parenthesis: `(4 + 3 - 2)`
     * Addition and subtraction is on the same level, so evaluate left to right
       * `4 + 3 = 7`, `7 - 2 = 5`
-* `3 * 5 ** 2 + 5 // 3 % 4`
-  * Exponent: `5 ** 2 = 52 = 25`
-* `3 * 25 + 5 // 3 % 4`
-  * Multiplication, division, modulus, integer division
-    * Multiplication, integer division, modulus are on the same level, so evaluate left to right
+2. `3 * 5 ** 2 + 5 // 3 % 4`
+    * Exponent: `5 ** 2 = 52 = 25`
+3. `3 * 25 + 5 // 3 % 4`
+    * Multiplication, division, modulus, integer division
+      * Multiplication, integer division, modulus are on the same level, so evaluate left to right
       * `3 * 25 = 75`
         * `75 + 5 // 3 % 4`
       * `5 // 3 = 1`
         * `75 + 1 % 4`
       * `1 % 4 = 1`
         * `75 + 1`
-* `75 + 1`
-  * Addition: `75 + 1 = 76`
-
+4. `75 + 1`
+    * Addition: `75 + 1 = 76`
 
 ## Let’s Practice
 
 Evaluate each of the python expressions:
 
-`1 + 2 * 3 / 4.0`
-`2 ** 8`
-`1000 % 365`
-`80 % 400`
-`480 % 400.0`
-`880 % 400`
-`8 * 6 - 7 ** 2`
+1. `1 + 2 * 3 / 4.0`
+2. `2 ** 8`
+3. `1000 % 365`
+4. `80 % 400`
+5. `480 % 400.0`
+6. `880 % 400`
+7. `8 * 6 - 7 ** 2`
 
 # Equation Building
 
-* You can just variables as operands, as well as in conjunction with numbers
-* Useful when writing programs where you need to:
+You can use variables as operands, as well as in conjunction with numbers (Python will just evaluate the variable as its value). This is useful when writing programs where you need to:
   * Take input from a user (the variable value will need to change)
   * Use longer numbers (using a variable called pi is much shorter than typing out  3.141592653589793 every time you want to use it)
-* Makes code more readable/understandable
-    * Using a specific name for a value is useful(especially when others read your code)
-    * Better to use a variable instead of the number each time it is used
-    * This is helps keep track of many different values when you are working with math
+
+This makes code more readable/understandable
+  * Using a specific name for a value is useful(especially when others read your code)
+  * Better to use a variable instead of the number each time it is used
+  * This is helps keep track of many different values when you are working with math
 ```python
 a = 4
 
 b = 5
 
-c = a**b  #Store the value that is
+c = a ** b  # Store the value that is
 
-#equal to 4**5 in c
+# equal to 4 ** 5 in c
 
 print(c)
 
@@ -197,10 +194,10 @@ print(c)
 ```
 
 ```python
-a = 4       #Assign 4 to a
-b = 5       #assign 5 to b
+a = 4       # Assign 4 to a
+b = 5       # Assign 5 to b
 
-c = a + b   #store the sum of a and b in c
+c = a + b   # Store the sum of a and b in c
 
 print(c)
 >>> 9
@@ -208,30 +205,23 @@ print(c)
 
 # Modules
 
-* To reduce the size of Python, it is divided into many parts that can be included as needed, called modules
-* Python has many __modules__ , portions of pre-written code that we can use in our programs
-  * These modules can save time by doing a lot of the work for us
-  * Modules can be __imported__ , or brought into our project for our use
-* Modules exist for many tasks, and can save you a lot of time when writing code
+To reduce the size of Python, some of Python's features are divided into many parts that can be included as needed, called modules. Python has many __modules__ , portions of pre-written code that we can use in our programs. Each module contains code for a specific purpose. These modules can save time by doing a lot of the work for us
+To use them, modules can be __imported__ , or brought into our project for our use.
 
-
-* One important module is called math, which you can use for float operations and other functions
-* To import a module, we use the keyword “import”
-* Modules can be thought of as a subscription for an app
-  * To use certain features you need to purchase a subscription or in this case import the module
-* Other modules include: date time(working with dates/times), random, etc.
+One important module is called math, which you can use for float operations and other functions. To import a module, we use the keyword `import`. Modules can be thought of as a subscription for an app. To use certain features you need to purchase a subscription or in this case import the module Other modules include: `datetime`(working with dates/times), `random`, etc.
 
 ## Float operations
 
-* Floats can be converted to integers by always rounding up or always rounding down
-  * Example:
-    * If you have enough batter for 4.65 cookies, you can only practically make 4 whole cookies (always round down, "floor" function)
-    * If you have to transport 10 people and each car only holds 4 people, you will need 3 cars, not 2.5 (always round up, "ceiling" function)
+Floats can be converted to integers by always rounding up or always rounding down. 
+
+For example:
+  * If you have enough batter for 4.65 cookies, you can only practically make 4 whole cookies (always round down, "floor" function)
+  * If you have to transport 10 people and each car only holds 4 people, you will need 3 cars, not 2.5 (always round up, "ceiling" function)
   * To do this, we need the  __math__  module, which can be imported using this statement at the top of your file:
-    * import math
+    * `import math`
   * From there, you can use `math.floor()` (down) and `math.ceil() (up)`
 
-```
+```python
 import math
 
 math.floor(5.9) → 5
