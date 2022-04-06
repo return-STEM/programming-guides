@@ -7,13 +7,20 @@ handout: "https://docs.google.com/document/d/1CCPVO6nZKoKcKfrT7gkKiq-0KTLP__Cg3K
 > 
 > ~ *The Return STEM team*
 
+Arithmetic is a fancy way of saying “math”. We use arithmetic every day!
+
+Calculating the total amount needed to pay at a restaurant, the amount of tax or tip on an item, figuring out distance from two places - these are just some of the ways in which we use math daily.
+
+Students of various ages use math daily – it’s a part of their curriculum. Such math may be easy to do without the help of a program. However, at times it can get repetitive. The math might just take a really long time to do by hand.
+
+For example, imagine that you are organizing a wedding and eventually decide that four hundred guests will attend. You need to find the total cost of the food and drinks, among others, for four hundred people. A small error in one place could ruin the entire calculation. Not only that, it would take a long time. Now obviously, you might say, why don't you use a calculator?
+
+The benefit of programming is that you can code it so that you don't even have to type all the numbers in for yourself. If the people RSVPing to a wedding did it online, you could load the data into your program and let your program do all the calculations.
+
+Nearly every program you write will involve these operators in some way shape or form. C++ even has a few operators t
 
 # Doing Math in Python
-* You can do math in Python just like you would in your math class, using symbols for basic operations:
-  * For example: `a = 5 + 3` causes `8` (5 + 3) to be assigned to the variable `a`.
-    * The symbols (5 and 3) on the sides of the operator (+) are called  __operands__
-* Basic math rules still apply!
-  * Division by zero displays an error
+You can do math in Python just like you would in your math class, using symbols for basic operations. For example: `a = 5 + 3` causes `8` (5 + 3) to be assigned to the variable `a`. The symbols (5 and 3) on the sides of the operator (+) are called  __operands__. Remember that basic math rules still apply. For example, python observes order of operations, and there are some operations that will cause errors, such as dividing a number by zero. 
 
 | Python Syntax | Operation | Math Symbol | Example | Result |
 | :-: | :-: | :-: | :-: | :-: |
@@ -24,28 +31,31 @@ handout: "https://docs.google.com/document/d/1CCPVO6nZKoKcKfrT7gkKiq-0KTLP__Cg3K
 
 ## Advanced Operators
 
-* There are other operators that may be more unfamiliar:
-  * **Integer (Floor) division** (`//`)
-    * Gives the  __whole number result__  of a division operation between two integers or floats
-      * 11 divided by 4  __is 2__  with a remainder of 3
-      * `11 // 4`  __equals 2__ * Truncates the quotient that you would get when you perform normal division with those numbers(the .75 of 11 / 4 gets removed when you do `11 // 4`)
+You have learned about the previous operations in a class before. However, Python has its own operations that may be less familiar that can be used for other purposes: 
+
+### Integer Division (`//`)
+
+Integer division, which uses the `//` operator (two slashes in a row), returns the whole number component of a division operator by two integers or floats. 
+
+For example, `11/4` evaluates to  `2` with a remainder of `3`, or `2.75`. `11/4` instead evaluates to just `2`, since the non-whole number part is left out. 
 
 ### Modulus (`%`)
-* Gives the  __remainder __ of a division operation between two integers (whole numbers) or floats
-  * 11 divided by 4 is 2 with a  __remainder of 3__
-  * `11 % 4`  __equals 3__
-* Modulus operator of the form x % y where x < y always results in x
-  * x / y will be 0 so the remainder has to be x
-  * 3 % 13  __equals 3__
-
-10 % 3 = 1
+Modulus ives the  __remainder__ of a division operation between two integers (whole numbers) or floats. For example, 11 divided by 4 is 2 with a  __remainder of 3__. Therefore, `11 % 4`  __equals 3__. 
 
 ![](arithmetic/arithmetic1.png)
 
-* Uses for modulus
-  * Checking whether a number is even or odd
-  * Converting between different bases
-  * Check whether a number is divisible by a certain value
+Modulus can be used for many different uses, including if a number is even or odd. 
+> When a number is odd, it always has a remainder of 1 when divided by 2. If it is even, its remainder is always 0. 
+
+A program that determins the parity of two numbers can be implemented like this: 
+
+```python
+num = int(input("Enter an integer: "))
+parity = num % 2
+print("The integer is odd: ", bool(parity))
+```
+
+This property of numbers will become more useful when you learn if-statements in the next lesson. 
 
 ### Exponent  (`**`)
 * Raises the left operand to the power of the right operand
