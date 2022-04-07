@@ -57,14 +57,17 @@ Even though it is called a parent-child relationship, it does not necessarily ne
 
 Polymorphism is the ability for different objects to be accessed through the same name, but from different classes. Essentially, different types can be accessed in the same way, using the same function. 
 
-This sounds very confusing, but you've already seen polymorphism in action - for example, the `+` operator behaves differently depending on what we use it on. When we use the `+` operator on integers, it performs the add function, but when we use it on strings, it concatenates them.
-Another example is `len()`. `len()` is used on strings to find the length of the string, but can also be used on lists or other collections to determine the number of elements in it. 
+By taking advantage of this, we can generalize certain classes that have similar methods. Most animals walk. Dogs and elephants can both walk. Yet, they walk differently. We can call the same method on both of them to make them both walk, rather than individually calling walk from both of them. 
+
+Consider a class representing polygons on a canvas, and several classes that inherit from `Polygon`, such as `Triangle`, `Square`, and `Pentagon`. Many of these shapes of similar properties, such as their number of sides. All objects of the class `Polygon` can be drawn; using the `draw()` function. We can call `draw()` from each of these objects, and they will perform different tasks. 
 
 ![Polymorphism Diagram](inheritance-and-polymorphism/polymorphism.png)
 
+This sounds very confusing, but you've already seen polymorphism in action - for example, the `+` operator behaves differently depending on what we use it on. When we use the `+` operator on integers, it performs the add function, but when we use it on strings, it concatenates them.
+Another example is `len()`. `len()` is used on strings to find the length of the string, but can also be used on lists or other collections to determine the number of elements in it. 
 
 The way we can implement this is actually quite simple: define methods with the same name in different classes, and then call those methods while ignoring the differences in class. 
-This example was presented to you in lesson 2 [ Link here ] 
+This example was presented to you in [Lesson 2](object-oriented).
 ```python
 class Dog:
   def walk():
