@@ -498,7 +498,22 @@ int main()
 In this example, no matter what house number we're trying to get to, the time to access the block of code is the same. 
 
 # The Ternary Conditional
-The previous operators we have dealth with only take two operands. This operator takes three operands, hence the ternary. We use the ternary conditional as a short form for if/else blocks, but the key difference is that the ternary operator can be evaluated.
+The previous operators we have dealt with only take two operands. This operator takes three operands, hence the ternary. We use the ternary conditional as a short form for if/else blocks, but the key difference is that the ternary operator is evaluated as an expression - you can use it like an [arithmetic operator](arithmetic). 
+
+The syntax of the operator looks like this
+
+```
+result = condition ? value if true : value if false
+```
+
+This code returns `10` if the `a < b` and `20` otherwise:
+
+```cpp
+// a and b are initialized above
+int result = a < b ? 10 : 20;
+```
+
+Note that we can directly assign the evaluated result of the ternary conditional operator to a variable.
 
 For example, consider if you wanted to create a variable that must be less than 10. If the user inputs a value that is greater than 10, you want the value to be 10, otherwise it can be set to that value. Using an if-else the code would be rather awkward:
 
@@ -535,7 +550,6 @@ int main()
 }
 ```
 
-The syntax of the operator is : `condition ? if true : if false`
 
 Also, if we wanted to declare a variable and initialize it in a single line depending on something else, we would not really be able to do that with if/else. We would need a ternary operator to do something like this in the previous code: 
 
@@ -548,3 +562,5 @@ If we were to try to do this in an if/else block, we would run in to the issue o
 This is they key difference of an if/else block and a ternary operator: **the ternary conditional operator evaluates to something**. An if/else block only runs the corresponding code block. 
 
 The ternary conditional operator is extremely powerful and allows us to simplify code and make it a lot more readable. To decide whether you should use if/else or the ternary conditional operator, ask yourself whether you want to **select a particular value**. If you do, then use the ternary operator. Otherwise, just use if/else.
+
+Also note that you can nest the ternary conditonal operator. However, doing so is not recommended as it makes the code a lot less readable. Most of the time if you need to nest the ternary operator, the code would be better written in if/else blocks.
