@@ -81,10 +81,80 @@ Remember, divisor is the number being divided and the dividend is what we divide
 
 ## Linear Search
 
+*Search algorithms* search for information in a given data structure. For example, given a list like this:
+```python
+numbers = [10, 50, 30, 70, 80, 60, 20, 90, 40]
+```
+If you wanted to find the index of `20`, you would use a search algorithm to find it.
+
+The simplest type of search algorithm is called _linear search_.
+
+A linear search algorithm that searches for x in a list called vals would go like this: 
+1. Start at index 0. Check if the element at index 0 is equal to x.
+2. If it is not, increment the index. Check if the element at that index is equal to x.
+3. Repeat 2. till a number matching x is found. 
+4. If a number is found, return the current index.
+5. If a number is not found, return -1 to show that the element is not in the list.
+
+Here's what it would look like as a diagram:
+
 ![Linear Search](algorithmic-thinking/linear-search.png)
 
-We literally just go down the list until we find the number. Just one by one through each index
+
+Let's implement that in code: 
+
+```python
+def linear_search(vals, x):
+   for i in range(len(vals)):
+      if vals[i] == x:
+         return i
+   return -1
+```
+
+Now let's find where 20 is in the list:
+
+```python
+
+def linear_search(vals, x):
+   for i in range(len(vals)):
+      if vals[i] == x:
+         return i
+   return -1
+   
+numbers = [10, 50, 30, 70, 80, 60, 20, 90, 40]
+
+print(linear_search(numbers, 20))
+
+>>> 6
+```
+
+An interesting thing to notice is that because the function will return `-1` if there is a value is _not_ in a list, it also doubles as a function that checks whether a value is *in* in the list, or not.
+
+For example, if I wanted to find whether the number 20 was in that same list, I could use the function like this:
+
+```python
+def linear_search(vals, x):
+   for i in range(len(vals)):
+      if vals[i] == x:
+         return i
+   return -1
+
+numbers = [10, 50, 30, 70, 80, 60, 20, 90, 40]
+
+if linear_search(numbers, 20) == -1:
+   print("This number isn't there!")
+else:
+   print("This number is there!")
+```
+
 ## [Binary Search](https://replit.com/@KevinLu28/binary-search#main.py)
+
+While linear search is a simple and easy to implement algorithm, it isn't very efficient. For example, if we were to search a very long list of numbers, and the number we want is at the end of the list, it would take a very long time.
+
+We can implement something known as a binary search to make this much easier.
+
+Binary searches only work on sorted lists, by taking advantage of a feature of sorted lists. 
+
 ```python
 def binarySearch(lis, l, r, x):
 #x represents the number being called, l represents the lowest constraint of the index and r represents the highest constraint of the index
@@ -160,7 +230,7 @@ compare([2,3,4,4,5])
 ```
 # Big O Notation
 
-##What is Big O notation?
+## What is Big O notation?
 
 Big O notation is a mathematical representation of the time complexity of a program as input size increases.
 
