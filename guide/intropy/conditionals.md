@@ -7,19 +7,27 @@ handout: "https://docs.google.com/document/d/121u4RvmFydfnA2z77UM_YtB5ksL3ES-Rhj
 > 
 > ~ *The Return STEM team*
 
-# The Problem
-* Write a program that, given a fahrenheit temperature reading from a thermometer, tells the user whether the patient has a healthy body temperature or not.
-  * (Assume that a temperature over or equal to 100℉ indicates a fever)
-* You already know how to:
-* Take an input from the user and assign it to a variable
-* Print out information for the user to see through the consoleHow can you make the program change what it does, based off of what the user types in?
-* One way is to use __if/else statements__:
 
-To solve our problem, we have decided to use  __if/else statements__ . But how exactly do these  __if/else statements__  work?
+Up until now, you have made linear programs - the way it runs is straightforward, but it might change based on user input. 
+Control structures change that up a bit. This lesson, we'll be showing you how to write programs that decide what code to run. This is called the control flow of the program, or which "path" the program takes. Think of it like a fork in the road–you decide to either go right or left. 
 
-# If/Else structure
-![](conditionals/python-4-if.png)
-# Syntax
+Let's say that you wanted to write a program that, given a fahrenheit temperature reading from a thermometer, tells the user whether the patient has a healthy body temperature or not. 
+You already know how to take input from a user, and then assign it to a variable. You also have learned how to print out information for the user to see through the console. Now, you will learn the conditional, which makes the program change what it does, based on the user input. Python implements this with the `if` statement. 
+
+# How do computers make decisions?
+
+Computers make decisions a little differently from humans. When I choose what I'll eat for lunch, I need to ask myself a few questions: What do I want? How much am I willing to spend? How convenient is it for me to get it? All these questions have an infinite number of answers. 
+
+However, Computers operate on an on-or-off basis; each question can only have two answers: `True` or `False`. These values are known as _booleans_. For example, a boolean could represent whether it's the weekend or not: If the day is saturday or sunday, it will evaluate to `True`, because the day is in the weekend. However, if it is any other day, it will evaluate to `False`. 
+
+Can you think of any other values that could be represented by a boolean?
+
+# Relational Operators
+
+relational operators fun
+
+# The `if` statement
+
 The if statement is structured like this:
 ```python
 if (condition):   
@@ -28,7 +36,21 @@ if (condition):
 
 When the condition is `True`, the statements under the indent are executed.
 
-If it is `False`, the statements under the indent are ignored.
+If it is `False`, the statements under the indent are ignored. 
+
+We can tell the user whether they have a fever or not: 
+
+```python
+temperature = input("What is your temperature?")
+if temperature > 100: 
+	print("You have a fever")
+```
+
+
+![](conditionals/python-4-if.png)
+
+![](../introcpp/conditionals/image2.png)
+
 ```python
 num = int(input())
 if num > 10:
