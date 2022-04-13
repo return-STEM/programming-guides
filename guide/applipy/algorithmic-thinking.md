@@ -247,7 +247,7 @@ print(binarySearch(arr, 0, len(arr), 10))
 
 ## Fibonacci Numbers
 
-A fibonacci numbers are part of the fibonacci sequence, where each number is the sum of the two before it, starting with 0 and 1. 
+Fibonacci numbers are part of the fibonacci sequence, where each number is the sum of the two before it, starting with 0 and 1. 
 The first couple fibonacci numbers look like this:
 
 ```
@@ -287,8 +287,6 @@ print(fib(num))
 ```
 A diagram here explains this idea: 
 ![Fibonacci function](algorithmic-thinking/fibonacci.png)
-
-Even though this is easier to understand, recursive functions are very inefficient, and usually should be avoided. 
 
 ## Duplicates in a list
 
@@ -336,6 +334,8 @@ We usually write Big O as a function of *n*. *n* represents the input size.
 
 Let's go through some common time complexities:
 
+### O(1)
+
 O(1) programs are *constant*. A O(1) program takes the same kind of time to run regardless of the input. An example of a O(1) program might be this:
 
 
@@ -346,6 +346,8 @@ def first_of(data):
 
 This program returns the first element of any data type you give it. This kind of program always takes constant time to run. 
 
+### O(n)
+
 O(n) programs are *linear*. A O(n) program's runtime increases linearly with the input size. This means that an increase in input size will always increase the run time by a constant amount. 
 
 ```python
@@ -355,9 +357,13 @@ for element in data:
 
 In this program, if the size of `data` is increased, there will be more elements to print, which it will do linearly. 
 
+### O(log(n))
+
 O(log(n)) programs are *logarithmic*. If you don't know, logarithmic functions are always increasing, but their rate of increase is decreasing. 
 
 This means that a O(log(n)) will usually reduce the size of the input as it goes on, which makes it faster as the program continues. Or, for example, the binary search algorithm we introduced earlier is logarithmic. Because the size of each binary search array is reduced each time, the program is logarithmic.
+
+### O(n^2)
 
 O(n^2) programs are *quadratic*. A program has quadratic time complexity when it performs an operation on each value on the data multiple times. 
 
