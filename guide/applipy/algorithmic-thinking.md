@@ -290,29 +290,38 @@ A diagram here explains this idea:
 
 Even though this is easier to understand, recursive functions are very inefficient, and usually should be avoided. 
 
-## [Duplicates in a list](https://replit.com/@KevinLu28/Duplciates#main.py)
-```def compare(list):
-  #comset keeps track of numbers we've seen in the list already
-  comset=set()
-  #count keeps track of where we are in the list, which pointer uses
-  count=0
-  
-  
-  while count!=len(list):
-    #using count, we can use variable to see what the value of the index is..
-    pointer=list[count]
-    #if we've seen that number already, we terminate the program and print out the number
-    if pointer in comset:
-      print(pointer)
-      return pointer
-    else:
-      #if we haven't seen the value before, then we add it to comset to keep track of it o we can say if later indices have the value or not
-      comset.add(pointer)
-      #go to next index of the list
-      count+=1
-#driver code
-compare([2,3,4,4,5])
+## Duplicates in a list
+
+Let's write a program to find the duplicates in a list. From the logic of this program, you will also be able to develop an algorithm that returns the unique elements of a list.
+
+To start, we want to record the values that we have seen already. 
+
+We will iterate through the list of values. If the number hasn't been seen yet, we will put it in `seen`. If it *has* been seen, we will check if it is in `duplicates` or not. If it's already in `duplicates`, we won't append it, since we don't want duplicates in our `duplicate` list. If it is not in duplicates, we'll add it. 
+
+This program looks like this: 
+
+```python
+def find_duplicates(vals):
+   seen = []
+   duplicates = []
+   for val in vals:
+      if val not in seen:
+         seen.append(val)
+      else:
+         if val not in duplicates:
+            duplicates.append(val)
+   return duplicates
+   
+arr = [1, 2, 2, 3, 6, 5, 6, 8, 1, 0]
+print(find_duplicates(arr))
+
+>>> [2, 6, 1]
 ```
+
+Thinking about this, how can you make a program that returns the unique elements of a list only (removes duplicates)?
+
+In the next lesson, you will learn about a data structure called the `set`. `set` can only store unique items, which makes this program much shorter and easier to write. A shortened example of this algorithm that uses `set` will be in the next lesson; but understanding this basic algorithm is a good way to learn about algorithms. 
+
 # Big O Notation
 
 ## What is Big O notation?
