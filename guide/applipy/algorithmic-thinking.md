@@ -155,6 +155,63 @@ We can implement something known as a binary search to make this much easier.
 
 Binary searches only work on sorted lists, by taking advantage of a feature of sorted lists. 
 
+You can sort a list in Python with the `sort()` function:
+
+```python
+nums = [9, 8, 5, 2, 7, 9]
+nums.sort()
+print(nums)
+
+>>> [2, 5, 7, 8, 9, 9]
+```
+
+To understand the process of a binary search algorithm, let's analyze how a binary search algorithm would find a number in a list like this:
+```python
+[12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
+```
+This list has 11 terms. So, the middle term is `27`. Let's try to find `39`. 
+Looking at the middle term, we know that `39 > 27`. We haven't found our index yet, but more importantly, we know that the location of `39` must be after `27`, because it is greater (It can't be before, because the list is *in order*). We can therefore rule out the lesser half of the list. 
+Now, our choices look like this:
+```python
+[30, 33, 36, 39, 42]
+```
+Now, the middle term is `36`. Let's do the same test! `39 > 36`. It is still greater, so we can rule out the first two terms of the list (with the same logic as the prior iteration). Now, we're left with
+```python
+[39, 42]
+```
+We have an even number of items - how do we find the middle? Generally, we use the earlier element, rather than the later one. Since `39 == 39`, We've found our item. 
+
+As you can see, this only took 3 iterations, excluding the sort. A linear search would have taken 10 iterations.
+
+Or, for example, we can try finding the number `24` in the same list:
+```python
+[12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42]
+```
+
+Let's start with `27` again, since it's the middle term. `24 < 27`, so we know that the value **cannot** be in the second half of the list. Therefore, we can rule that part out.
+```python
+[12, 15, 18, 21, 24]
+```
+Now the middle number is `18`. `24 > 18`, so we know that it must be in the second half. 
+```python
+[21, 24]
+```
+Taking the middle number to be the earlier item, we find again that `24 > 21`. Let's eliminate that:
+```python
+[24]
+```
+We are left with one term, which must be the term we are searching for. 
+
+Now we know that you know what the algorithm is like, let's summarize this:
+1. Start at the middle of the list. Determine whether the target is greater than or less than the middle number.
+   * If it is greater than the middle number, you can eliminate the first half of the list. 
+   * If it is less than the middle number, you can eliminate the second half of teh list.
+   * If it is equal, you have found your target
+2. Repeat this, but with the new boundaries that you have determined from step 1. 
+3. When there is only one term left, you have found your element.
+
+We can implement this in code, like this: 
+
 ```python
 def binarySearch(lis, l, r, x):
 #x represents the number being called, l represents the lowest constraint of the index and r represents the highest constraint of the index
@@ -183,7 +240,9 @@ def binarySearch(lis, l, r, x):
 # Driver Code
 arr = [2, 3, 4, 10, 40]
 x = 10
+print(binarySearch(arr, 0, len(arr), 10))
 
+>>> 3
 ```
 
 ## Fibonacci Numbers
