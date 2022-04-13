@@ -79,7 +79,7 @@ Remember, divisor is the number being divided and the dividend is what we divide
     * When the digits pulled down are bigger than the dividend, repeat steps 1a and 2 until you cannot pull down anymore digits.
 # Common Algorithms
 
-## Linear Search
+## [Linear Search](https://replit.com/@liuj05/Linear-Search#main.py)
 
 *Search algorithms* search for information in a given data structure. For example, given a list like this:
 ```python
@@ -245,7 +245,7 @@ print(binarySearch(arr, 0, len(arr), 10))
 >>> 3
 ```
 
-## Fibonacci Numbers
+## [Fibonacci Numbers](https://replit.com/@liuj05/Fibonacci-Numbers#main.py)
 
 Fibonacci numbers are part of the fibonacci sequence, where each number is the sum of the two before it, starting with 0 and 1. 
 The first couple fibonacci numbers look like this:
@@ -288,7 +288,7 @@ print(fib(num))
 A diagram here explains this idea: 
 ![Fibonacci function](algorithmic-thinking/fibonacci.png)
 
-## Duplicates in a list
+## [Duplicates in a list](https://replit.com/@liuj05/Duplicates#main.py)
 
 Let's write a program to find the duplicates in a list. From the logic of this program, you will also be able to develop an algorithm that returns the unique elements of a list.
 
