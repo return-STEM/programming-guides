@@ -246,7 +246,31 @@ print(binarySearch(arr, 0, len(arr), 10))
 ```
 
 ## Fibonacci Numbers
+
+A fibonacci numbers are part of the fibonacci sequence, where each number is the sum of the two before it, starting with 0 and 1. 
+The first couple fibonacci numbers look like this:
+
 ```
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+```
+We can implement this using recursion. We will call this function inside itself. 
+
+First, we need to define base cases for our recursive function. We can't get the previous numbers of the first two numbers, so we will need to define them:
+```python
+def fib(n):
+   # base cases
+   
+   if n == 0:
+      return 0
+   if n == 1:
+      return 1
+```
+If the number is neither of the first two, we'll go call the fibonacci functions for the previous two numbers and add them together:
+```python
+return fib(n-1) + fib (n-2)
+```
+Combining this together,
+```python
 def fib(n): 
   #base cases
   #
@@ -260,9 +284,11 @@ def fib(n):
     return fib(n-1) + fib(n-2)
 num=int(input("Enter fib number here:"))
 print(fib(num))
-
 ```
+A diagram here explains this idea: 
 ![Fibonacci function](algorithmic-thinking/fibonacci.png)
+
+Even though this is easier to understand, recursive functions are very inefficient, and usually should be avoided. 
 
 ## [Duplicates in a list](https://replit.com/@KevinLu28/Duplciates#main.py)
 ```def compare(list):
