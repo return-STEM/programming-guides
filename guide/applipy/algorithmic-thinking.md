@@ -9,37 +9,37 @@ Essentially, algorithmic thinking is the process of creating the steps to solve 
 Let's start with a simple example of an algorithm, such as baking a cake.
 Before you read on, try to write your own algorithm for baking a cake. You don't need to include every ingredient, but remember all the key steps. 
 
-Collect ingredients for the cake
-Mix the ingredients in a bowl
-Pour the batter into a tray, then bake it. 
-Let it cool before cutting and eating
+1. Collect ingredients for the cake
+2. Mix the ingredients in a bowl
+3. Pour the batter into a tray, then bake it. 
+4. Let it cool before cutting and eating
 
 These instructions technically describe how to bake a cake, but are not very specific. When writing code, your instructions will need to be very specific, since computers cannot infer what you mean. If you forget to write something, computers will simply not do it. 
 
 There are a lot of problems with this recipe: we didn't include any specific ingredients, or describe how to get them. We need to include some more specific instructions: 
 
-Collect ingredients for the cake
-Grab 2 eggs from the fridge
-Measure 3 cups of flour from the pantry
-Measure 1 cup of sugar from the sugar jar
-Cut 1 cup of butter from the fridge
-Mix the ingredients in a bowl
-Melt the butter in a microwave
-Mix the butter with the sugar
-Add the eggs
-Add the flour
-Stir
-Pour the batter in a tray
-Grease the tray
-Pour the batter in
-Bake the batter
-Preheat the oven to 350 F. 
-Once preheated, put the tray in
-Take it out after 30 minutes
-Let the cake cool
-Take the cake out of the oven
-Turn off the oven
-Put the cake somewhere to cool
+1. Collect ingredients for the cake
+    * Grab 2 eggs from the fridge
+    * Measure 3 cups of flour from the pantry
+    * Measure 1 cup of sugar from the sugar jar
+    * Cut 1 cup of butter from the fridge
+2. Mix the ingredients in a bowl
+    * Melt the butter in a microwave
+    * Mix the butter with the sugar
+    * Add the eggs
+    * Add the flour
+    * Stir
+4. Pour the batter in a tray
+    * Grease the tray
+    * Pour the batter in
+5. Bake the batter
+    * Preheat the oven to 350 F. 
+    * Once preheated, put the tray in
+    * Take it out after 30 minutes
+6. Let the cake cool
+    * Take the cake out of the oven
+    * Turn off the oven
+    * Put the cake somewhere to cool
 
 By being slightly more specific, our list of instructions just got a lot longer. But there are still some things we can focus on. 
 
@@ -62,21 +62,21 @@ Each of these functions is quite abstract, but I can define them in detail later
 
 This is the process you might go about when you solve a programming problem: 
 
-Determine the outputs and behavior of the code you will write
-If it is a written problem, be sure to read it in its entirety
-Break the code into a smaller, more codable parts
-Write down some pseudocode for how each part will work
-Implement the steps in code
-Debug: Does it match what the intended output from 1)? Are there any bugs? 
-If there are, determine what they are and what's causing them. Then, fix what's causing the bug. 
+1. Determine the outputs and behavior of the code you will write
+    * If it is a written problem, be sure to read it in its entirety
+2. Break the code into a smaller, more codable parts
+3. Write down some pseudocode for how each part will work
+4. Implement the steps in code
+5. Debug: Does it match what the intended output from 1)? Are there any bugs? 
+    * If there are, determine what they are and what's causing them. Then, fix what's causing the bug. 
 
 Let's break down *long division* from an algorithmic perspective. 
 Similarly to the baking analogy, let's trace out the steps.
 Remember, divisor is the number being divided and the dividend is what we divide it with
-Is the first digit of the divisor bigger or less than the dividend?
-If so, count the number of times it goes into the number, put it up top, then subtract the amount of times the dividend goes into the divisor. Then pull the next digits down until the number formed by the digits are bigger than the dividend
-If not, pull down digits until the digits pulled down from the divisor are bigger than the dividend. Then, go to step 2.
-When the digits pulled down are bigger than the dividend, repeat steps 1a and 2 until you cannot pull down anymore digits.
+1. Is the first digit of the divisor bigger or less than the dividend?
+2. If so, count the number of times it goes into the number, put it up top, then subtract the amount of times the dividend goes into the divisor. Then pull the next digits down until the number formed by the digits are bigger than the dividend
+3. If not, pull down digits until the digits pulled down from the divisor are bigger than the dividend. Then, go to step 2.
+    * When the digits pulled down are bigger than the dividend, repeat steps 1a and 2 until you cannot pull down anymore digits.
 # Common Algorithms
 
 ## Linear Search
@@ -135,8 +135,6 @@ print(fib(num))
 ```
 ![Fibonacci function](algorithmic-thinking/fibonacci.png)
 
-
-Diagram mentioned ^
 ## [Duplicates in a list](https://replit.com/@KevinLu28/Duplciates#main.py)
 ```def compare(list):
   #comset keeps track of numbers we've seen in the list already
@@ -204,8 +202,11 @@ for x in vals1:
     for y in vals2:
         print(x, y)
 ```
-![Big-O](algorithmic-thinking/time-complexity.png)
 
+You can visualize different kinds of algorithms with this diagram: 
+![Big-O](algorithmic-thinking/time_complexity.png)
+
+This diagram illustrates the different kinds of time complexity that your program might have. Notice that the worst kind of algorithm is O(n!), which grows very fast. This means that if your program receives even a slightly large amount of input, it will take a very long time to run. 
 
 ## Determining the Big O notation of your program
 
