@@ -1,8 +1,6 @@
 ---
-slides:
-""
-handout:
-""
+slides: "https://docs.google.com/presentation/d/13yL1CmXm2XoZxtGikvLPJIG9Kgwpp3Z3NExuAInM2Kk"
+handout: "https://docs.google.com/document/d/11PSzTrG1Aik18gcogeoxqSistXZfYhNWaDQQKZg_w8M"
 ---
 
 In the last lesson, we learned about conditionals, a type of control structure that changed the program flow depending on whether certain conditions were met. Just like conditionals, **loops** execute code when a condition is met, but instead of moving on, they keep repeating the code until the condition is no longer met. 
@@ -339,7 +337,7 @@ for (int i = 2; i <= sqrt(inp); i++)
 	}
 ```
 </details>
-
+<br/>
 <details>
 <summary>You want to keep on running a program until the user enters "stop" to exit</summary>
 Answer: Do While Loop
@@ -354,7 +352,7 @@ do
 } while (inp != "stop");
 ```
 </details>
-
+<br/>
 <details>
 <summary>Euclid's Algorithm for GCD</summary>
 Answer: While Loop
