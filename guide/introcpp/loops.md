@@ -48,6 +48,20 @@ The while loop is kind of like an infinite if-statement: it will continue to ite
 3. Repeat steps 1 and 2 until the condition is false
 4. End the loop by skipping the body and continuing through to the rest of the program
 
+Consider the following while loop
+
+```cpp
+while (a < 10)
+{
+	cout << b << endl;
+	a += c;
+}
+```
+
+We can visualize what is going on as the graphic below
+
+![](loops/whileLoop.svg)
+
 Now, there are two pitfalls that we might find ourselves in after coding a while loop. First of all, notice that before the loop is even run, the condition is checked. Thus, it is possible for the loop to **NEVER RUN** if the initial condition is not met.
 
 The opposite of this would be the **infinite loop** which happens if the condition never becomes false. The body of the loop would keep on executing. The code after the loop is never executed, and the program will not keep running until it crashes or is stopped manually. This can be a dangerous error to encounter and could even freeze up your computer.
@@ -86,7 +100,7 @@ The last check of the condition evalues to false, so the code is not run again. 
 | 5 | count = 5 | `5 <= 5` is true | count = 5 |
 | END | count = 6 | `6 <= 5` is false | count = 6 |
 
-This time the before and after the check condition is the same, because the increment to the count variable  happens **before** the while loop checks the condition. 
+This time the before and after the check condition is the same, because the increment to the count variable  happens **before** the while loop checks the condition. It all essentially boils down to precedence.
 
 # The `do while` Loop
 However, if we wanted to keep the condition as `++count < 5` and have it execute 5 times, we could use a special kind of while loop, the do while loop. If we were to use the aforementioned condition in a regular while loop, it would iterate 4 times. However, the **condition is evaluated after each iteration** of the loop rather than before, meaning that **the body of the loop is always executed at least once**.
@@ -189,6 +203,8 @@ With the update-statement, the effect of using pre or post increment/decrement d
 
 However, from a **memory** perspective, the pre-increment is preferred in for loop headers. This is because using a post-increment creates an extra temporary variable in memory: one variable is used to store the original value and another to store the incremented value. 
 
+![](loops/preVspost.svg)
+
 Such a creation is necessary in the case that you are attempting to use both values in your code, but it means that in cases like the for loop where no such variable is needed, it is a waste of memory and can negatively affect program execution time. Therefore, it is considered best practice to stick to the pre-increment.
 
 # Range Based `for` Loop
@@ -288,6 +304,8 @@ int main()
 
 Now obviously this program is inefficient and there are better ways to write the code, but use cases for break statements will come up when you are coding. 
 
+![](loops/breakCF.svg)
+
 Sometimes you might want to continue iterating a loop, but not execute the rest of the code in the loop. Rather than writing a large if/else block, we can simplify code using a `continue` statement. If we wanted to write a program that looped through numbers, omitting ones that are multiples of 5 and 7, we could contain it all in an if/else block. However, it might be simpler and make the meaning more obvious to use a continue statement.
 
 ```cpp
@@ -306,6 +324,8 @@ int main()
 ```
 
 This is also trivial to do with an if/else statement, but with more complicated code, continue can really help out.
+
+![](loops/continueCF.svg)
 
 >Both break and continue only do so in the loop they are called in. A break statement called within nested loops will only exit the loop it is called in.
 
