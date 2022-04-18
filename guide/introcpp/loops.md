@@ -22,7 +22,11 @@ int main()
 }
 ```
 
-Now, that's not too bad. But what if you wanted to print something fifty times? Or even a hundred times? Or better yet—you wanted to print something a different amount of times based on what the user inputs. That would take a long time to program, and it might not even work correctly for all inputs. That's where loops come in.
+Now, that's not too bad. But what if you wanted to print something fifty times? Or even a hundred times? Or better yet—you wanted to print something a different amount of times based on what the user inputs. 
+
+Maybe our purpose is more abstract; we want to look through a large database of names to find something. How can we tell the computer to check things many times over and over again?
+
+These would all take a long time to program, and it might not even work correctly for all inputs. That's where loops come in.
 
 # Loops
 Before we start writing code, let's discuss the syntax and terminology with loops in C++. C++ offers us three different types of loops: the **while**, **do-while**, and **for** loop. They each have their own use cases, but the format is roughly the same. 
@@ -62,7 +66,7 @@ We can visualize what is going on as the graphic below
 
 ![](loops/whileLoop.svg)
 
-Now, there are two pitfalls that we might find ourselves in after coding a while loop. First of all, notice that before the loop is even run, the condition is checked. Thus, it is possible for the loop to **NEVER RUN** if the initial condition is not met.
+Now, there are two pitfalls that we might find ourselves in after coding a while loop. First of all, notice that before the loop is even run, the condition is checked. Thus, it is possible for the loop to **never run** if the initial condition is not met.
 
 The opposite of this would be the **infinite loop** which happens if the condition never becomes false. The body of the loop would keep on executing. The code after the loop is never executed, and the program will not keep running until it crashes or is stopped manually. This can be a dangerous error to encounter and could even freeze up your computer.
 
