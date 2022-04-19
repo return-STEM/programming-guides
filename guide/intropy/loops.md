@@ -281,7 +281,7 @@ for i in range(0, 6):
 
 ## The `for` Loop Over a String
 
-In the previous [lessons](, you learned that you can access the characters of a string by using `str_name[index]`. Remember that indices start from 0. 
+In the previous [lessons](console-io), you learned that you can access the characters of a string by using `str_name[index]`. Remember that indices start from 0. 
 
 For example:
 
@@ -299,8 +299,6 @@ s[6]
 
 To iterate through a string, you can create a loop which iterates through a set of numbers, then use those numbers to reference each character:
 
-Remember that you can use `len(s)` to get the length of the string s.
-
 ```python
 s = "Hello World"
 for i in range(len(s)):
@@ -309,7 +307,9 @@ for i in range(len(s)):
 
 This code will output `"Hello World"` with each character on its own line.
 
-While it is possible to use `range()`, Python has a built in method to iterate over a string:
+In the example above, we created a `range` iterable and iterated through it. Then, with the numbers contained in `range`, we referenced characters in `s`. However, strings are also iterable!
+
+This means that we can directly iterate through strings: 
 
 ```python
 s = "Hello World"
@@ -325,20 +325,23 @@ for i in range(len(s)):
 	print(s[i])
 ```
 
-This method does the same thing as the method presented in the last slide, but is simpler and easier to read.
+Though they produce the same product, directly using string is much more readable. 
 
-## `break`,  `continue`, and `else`
 ## `break` in `for` loops
 
 If you want a for loop to prematurely end, you can use the keyword `break`.
 
 ```python
- s = 'Python' for letter in s:     if letter == 'h':         break
-     print("Current letter", letter)
- >>>	Current letter: P
- >>>	Current letter: y
- >>>	Current letter: t
-
+ s = 'Python'
+ for letter in s:
+ 	if letter == 'h':
+		break
+ 	print("Current letter", letter)
+```
+```
+>>>	Current letter: P
+>>>	Current letter: y
+>>>	Current letter: t
 ```
 In this code, the code iterates through the letters of the string `s` until reaching `'h'`.
 
@@ -363,9 +366,9 @@ For loops can also use the `continue` keyword and in for loops this keyword can 
  >>>	Current letter: n
 
 ```
-In this example, the for loops iterates through each letter in the string s but skips h as the `if` statement followed by the `continue` keyword skips that iteration of the string.
+In this example, the for loops iterates through each letter in the string `s` but skips the letter `h`, since it `continue`s to the next iteration if `letter == h`. 
 
-## `else` in for loops
+## `else` in `for` loops
 
 The else keyword can be used in for loops to print something when the loop is done, **if the loop does not exit prematurely with** **`break`**
 
@@ -394,24 +397,31 @@ Which use of the range function goes through every odd number from 1-20?
 	a. `for i in range(20, 2)`
 	b. `for i in range(1, 20, 2)`
 	c. `for i in range(1, 20, 1)`
-	d. `for i in range(20, 1)
+	d. `for i in range(20, 1)`
 
 Which data type can a for loop not iterate through?
 	a. Strings
 	b. Lists
 	c. Integers
 
-# Which type of loop should I use?
+<details> 
+<summary> Answers: </summary>
+B, C
+</details>
 
-* Number of iterations
-  * In a while loop the number of iterations is unknown
-  * In a for loop the number of iterations should be already known
-* What a while loop is better at
-  * Asking for user input
-  * When the increment isn’t increasing by a standard amount each time
-* What a for loop is better at
-  * Iterating through a list, string, etc.
-  * Iterating through a sequence of numbers
+# Determining the type of loop to use
+
+You've just learned two types of loops. Here are some situation in which a while loop would be good:
+1. When the number of iterations is unknown
+2. When the condition isn't based on a quantity of iterations, but instead another value
+3. When you want to ask for user input many times
+4. If the increment of the while loop increases by a non-consistent value each time
+
+In other situations, a for loop would be better:
+1. When the number of iteration is already known
+2. When you are iterating through a data structure such as a list or string
+3. When you iterate through a sequence of numbers
+
 
 # `if` statement inside of `while`/`for` loops
 In previous examples, you'll see that we included `if` statements inside of loops.
@@ -473,11 +483,10 @@ for weeks_of_month in range(1,5):
 ```
 
 # Defensive Programming
-* Any program you write that requires user input should be **defensive**
-  * They should be able to deal with any input the user enters, even if it is invalid
-    * The program should not crash whenever the user enters invalid input
-* This can be done using `if` statements to check user input and `while` loops to restart the program
 
+Any program that requires user input to function should be **denfensive**. This means that it can deal with any kind of input taht the user gives it, even if it is invalid. The program should not crash if the user gives it something it can't handle. For example, if your program asks for a number, and the user enters a string, many times it won't run properly. Therefore, it is important to check what kind of input the user is giving. 
+
+In this example, the program asks the user for a three letter word. It continues to ask the user for a three letter word till the user gives it valid input. If the user gives it a three letter word the first time, it exits the loop and the program continues.
 ```python
 while True:
     x = input("Please enter a three letter word")
@@ -487,8 +496,6 @@ while True:
 # Do something with the three letter word
 # We now know for sure it is three letters and a string
 ```
-
-
 
 You can and should perform any check that may crash the program:
 
