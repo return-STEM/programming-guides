@@ -3,56 +3,65 @@ slides: "https://docs.google.com/presentation/d/1UHgdHygv2J3hR-6A02cQNiJdRfuSDyZ
 handout: "https://docs.google.com/document/d/1RgdFtCjR7ILACKVqAXQr8FIQeF0nHbvrVlIvNRQs16Q"
 ---
 
-> This guide is still under development. We'll be overhauling the Introduction to Python content in the next few months. Stay tuned for more changes and better tutorials!
-> 
-> ~ *The Return STEM team*
+In past lessons, you learned about different data types and how to manipulate them. Now you will learn one of the most commonly used structures in Python, the list. Lists are useful ways to store collections of data, and will help you write algorithms and other complex programs. 
+
+If you have studied another language in the past, Python lists are similar to arrays. 
 
 # What are lists?
-![](lists/lists-7-example.png)
 
-**Lists** are an ordered collection of items.
-Each individual item inside the list is called an **element**
 
-These items can be:
+A list is simply an ordered collection of items (that we call **elements**). You've already learned what these items can be: 
 - Integers/floats/booleans
 - Strings
 - Other data types
 
-**If variables are boxes, a list would be a shelf which you place the boxes on.**
+You can think of lists like a shelf. Shelves can contain different types of items - like books or other ornaments. You put the books there to organize them, and it makes tasks like finding a certain book much easier (compared to if you were to search through every room in your house). 
 
-# Why Use Lists?
-**Lists** offer a useful way to organize data where there is a variable number of entries and perform the same task on a lot of grouped data.
+![](lists/lists-7-example.png)
 
-For example, let’s say that I have a couple of lists to represent some information about a student at a school.
+A list is just a way for us to organize data, especially when they are related. Imagine you are writing a program to record the grades that each student gets in a school. You could represent each grade as a float, and put all those grades into a list to store them together. 
 
-```python
-name = "John"
-grade = 8
-scores = [98.0, 93.0, 87.5, 100.0]
-attendance = [True, False, True, True, True]
+When data is organized like this, it is clear and concise. Additionally, we can do the same task on each element of the list, such as finding the average value of each number in the list, or others. 
 
-```
+# Syntax
 
-It becomes much easier to find John’s average score, or find how many days he has missed class.
-
-# List Syntax
-
-Lists are declared like variables, but use square brackets \[] around everything within them:
+Lists are declared like variables, but use square brackets `[]` to enclose whatever is inside them:
 
 ```python
 list1 = ["cat", "dog", "cow"]
 # assigns the strings cat, dog, and cow to list1.
 ```
 
-Each separate item inside the list is separated by commas. Here's a list containing integers from 0 to 9:
+Each element is separated by a comma `,`. For example, this is a list of all the integers from 0 - 9:
+```python
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+But a list can be any data type, for example booleans. If you wanted a list to represent the days that somebody works out in a week, you could make a list with 7 elements, with each element being `True` or `False`, representing whether somebody worked out or not:
+```python
+days = [True, False, False, True, True, False, False]
+```
+In the future, you will learn other more complex data types like classes and other data structures. These can also reside inside lists. 
+
+# Why Use Lists?
+
+This program represents some information about a student John in some school:
 
 ```python
-nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+name = "John"
+grade = 8
+scores = [98.0, 93.0, 87.5, 100.0]
+attendance = [True, False, True, True, True]
 ```
+
+Instead of writing out attendance as individual variables, we can just include it as a list. 
+
+But there's another advantage to this: tt becomes much easier to find John’s average score, or find how many days he has missed class.
+In fact, most functions that work on groups of data in Python will ask for list input. 
+
 # Indices
 Each item in the list has an **index** that describes its position in the list. This is similar to someone's position in line--if you're first in line, you are at the front of the line.
 
-However, in programming, the **first element in the list has the index 0.**
+However, in programming, the **first element in the list has the index 0**, not at 1. 
 
 > This is called **zero-indexing**, where zero is the first value of a sequence of numbers (count starting from zero)
 
@@ -62,9 +71,21 @@ my_list = ['a', 'b', 'c', 'd']
 #           0    1    2    3
 ```
 
+You can access the element at index _n_ like this:
+```python
+my_list[n]
+```
+Which finds the element with index `n` in the list. For example, if
+```python
+my_list = ['a', 'b', 'c', 'd']
+```
+then
+`my_list[0]` would be `'a'`, `my_list[1]` would be `'b'`, `my_list[2]` would be `'c'`, and `my_list[3]` would be `'d'`.
+
+
 ## Negative indices
 
-Positive indices reference elements from *left to right*.
+Positive indices reference elements from *left to right*. But, you can also index from the opposite side, using negative indices. 
 
 Negative indices start from the opposite side, from right to left.
 
@@ -73,36 +94,62 @@ my_list = ['a', 'b', 'c', 'd']
 #           ^    ^    ^    ^
 #           -4    -3    -2   -1
 ```
+In this example,
+`my_list[-1]` is `'d'`, while `my_list[-2]` is `'c'`. 
 
--1 is the *last* element of the list
+You can use negative indices to find the last element of a list, or the second to last element, etc. 
 
--3 is the *third to last* element of the list
+However, you will eventually learn ways to do this even without using negative indices. 
 
 # Getting and Setting Elements
+You know that you can access elements of a list by using index operator `[]`. You can not only get values from them, but also change the value stored at that location in the list. For example, 
+`x = list[0]` sets variable `x` to `'a'`, the first element (index 0) in the list
 
-To retrieve a single list **element**, use the list name followed by the element's index in square brackets. For example, `my_list[1]` returns `'b'` because  `'b'` is the second (index 1) element in the list.
-- `x = list[0]` sets variable `x` to `'a',` the first element (index 0) in the list
-
-You can also set individual elements as well using this technique
-- `my_list[2] = 'y'` sets the third element (index 2) to `'y'`
-- `my_list` now has the value `['a', 'b', 'y', 'd']`
+You can also set individual elements as well using this technique:
+`my_list[2] = 'y'` sets the third element (index 2) to `'y'`
+`my_list` now has the value `['a', 'b', 'y', 'd']`
 
 ```python
 my_list = ['a', 'b', 'c', 'd']
-#           ^    ^    ^    ^
-#           0    1    2    3
+print(my_list)
+my_list[2] = 'y'
+print(my_list)
 ```
+```
+['a', 'b', 'c', 'd']
+['a', 'b', 'y', 'd']
+```
+
+# IndexError
+
+When designing programs to use lists, you may encounter more errors. One of the common ones that beginners encounter is called the `IndexError`. Python does this when you call for an index in the list that doesn't exist.
+
+Consider this list:
+```python
+my_list = ['a', 'b', 'c', 'd']
+my_list[5]
+```
+Notice that since the list only has 4 elements, `my_list[5]` doesn't exist! Python will display this error:
+```python
+IndexError: list index out of range
+```
+To fix this error, you can trace your code and determine where it's calling for an index that doesn't exist. 
+> Remember that because lists are zero-indexed, a list with _n_ elements will have a maximum index of _n - 1_, not _n_!
 
 ## List Slicing
 
-Just like in strings, lists can also be **sliced**. Slicing effectively *creates a new list* using a part of the original list.
-  - It **does not mutate** the original list
+Just like in strings, lists can also be **sliced**. Slicing effectively *creates a new list* using a part of the original list. Slicing **does not** effect the old list. 
 
 ![](lists/lists5.png)
 
-The syntax looks like this:
+The syntax looks like this: 
 
-`list_name[start:end]` where `start` and `end` are both indices
+```python
+list_name[start:end]
+``` 
+(where `start` and `end` are both indices)
+
+For example:
 
 ```python
 lst = [50, 70, 30, 20, 90, 10, 50]
@@ -110,11 +157,12 @@ print(lst[1:5])
 >>> [70, 30, 20, 90]
 ```
 
-> Remember that `start` is inclusive, but `end` is exclusive.
->
-> Omitting `end` like `list_name[start:]` will make the code slice till the end of the list
-> 
-> Meanwhile, omitting `start`, like `list_name[:end]` will make the code slice from the beginning
+> Remember that `start` is inclusive, but `end` is exclusive. Python will include the element of the `start` index inside, but will stop just before the `end` index. 
+
+Omitting `end` like `list_name[start:]` will make the code slice till the end of the list
+Meanwhile, omitting `start`, like `list_name[:end]` will make the code slice from the beginning
+
+You can think of it as Python slicing a sandwich. If you wanted a chunk of the sandwich in the middle, you would define where to start and where to end. But, if you wanted the front end of the sandwich, you wouldn't cut at the beginning - you would just cut once in the middle and take the end. Or, if you want to get the back end of the sandwich, you would also cut in the middle, but not at the end. 
 
 ## Indices Practice
 
@@ -134,6 +182,19 @@ Using the declarations above, evaluate:
 7. `animals[0:2]`
 8. `fruits[1:]`
 9. `nums[:5]`
+
+<details>
+	<summary> Answers: </summary>
+1. 1
+2. 'pig'
+3. 'lemon'
+4. 55
+5. 'tomato'
+6. [1, 2, 3, 5]
+7. ['cat', 'dog']
+8. ['banana', 'lemon', 'tomato']
+9. [1, 1, 2, 3, 5]
+</details>
 
 ## `len()`
 
@@ -208,6 +269,9 @@ In the previous method, you were cycling through numbers, and using numbers to r
 > **You cannot use this type of loop to change the values inside a list.**
 
 # List Methods & Operations
+
+In the introduction, we talked about a grading system. You could define a bunch of variables for each grade the student receives - but what if the teacher inputs a new grade? You would run out. Fortunately, lists can change in size. 
+
 ## `.pop()`
 
 To delete a single element from a list, you can use the `.pop()` function. For example, `letters.pop(2)` deletes the item at the second index (3rd element).
