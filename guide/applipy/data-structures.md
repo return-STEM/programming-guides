@@ -1,5 +1,5 @@
-Data Structures
 In this lesson, you will learn about data structures, which are just ways of organizing data. You've already learned a couple of them, like lists. Now, you will learn about linked lists and other data structures that will help you improve the algorithms you write and help you model other types of data. 
+
 
 # Linked Lists
 Linked lists are collections of **nodes** that are chained together by **links**. Each node stores some data and a *next*. You can visualize a node like this:
@@ -249,46 +249,112 @@ First, we'll check if the head has our value. If not, we'll go through each node
 
 # Other Data Types
 
+Python has 4 built-in data types:
+1. List
+2. Set
+3. Tuple
+4. Dictionary
+
+You have already learned what lists are - now, you'll learn 3 similar data types, starting with sets. 
+
 ## Sets
-This is similar to a list in the sense that it is a collection of objects. However, this list is *unordered*. If you were to iterate through the list, it would be a different result every time as every object is never in the same order. Like a jumbled bag of sorts. This is useful for when you don't necessarily need to have the objects sorted or counted, but just to have them grouped. For example, if we have a list of all the cities in the world, we do not need to have them ordered. This makes it especially useful to use with the *in* operator as it allows for faster checking whether or not an object is in the set. Sets cannot have duplicates.
 
+Sets, like lists, are collections of objects. Unlike lists, they are *unordered*. You cannot access the elements of a set with the index operator because of this. Sets are useful for storing collections of data that do not need to be ordered, and should not have duplicates. 
 
-#Declaration
-To declare a set, we use the set() function.
-For example
+This is because sets do not allow duplicates (no two items in a set will be the same). Our programs become more efficient by using sets, since they have less to check over. 
+
+You can define a set like this:
+```python
+my_set = {1, 2, 3, 4, 5}
 ```
-set1=set()
+Instead of square brackets, we use curly braces `{}`. Additionally, you can cast lists into sets using the `set()` function:
+```python
+my_set = set([1, 2, 3, 4, 5])
 ```
-From there we can append
-(Note that to append to a set, we instead use .add() instead of .append())
 
+In the [previous lesson](algorithmic-thinking.md), we went over an algorithm to find the duplicate elements in a list. Now, this program becomes more simple:
 
-If you want to initialize it as well.
-
+```python
+def find_duplicates(vals):
+  seen = set()
+  duplicates = []
+  for val in vals:
+    if val in seen:
+      duplicates.append(val)
+    else:
+      seen.add(val)
 ```
-set2= set([something,somethingagain,moresomethings])
 
+In this method, we take advantage of the fact that sets cannot have duplicate values. 
+
+Additionally, you will find these two methods useful:
+
+- `add()` adds a value to the set
+- `clear()` clears the set
+- `discard()` deletes a value from the set
+- `len()` returns the length of the set
+
+
+## Dictionaries
+
+Dictionaries store values as `key`:`value` pairs. Unlike lists, which store values with a number representing its location, dictionaries use keys to represent each value. Additionally, dictionaries are ordered (in Python 3.6 and below, dictionaries are unordered) and do not allow duplicate values. 
+
+You can define a dictionary like this:
+```python
+my_dict = {
+  key1: val1
+  key2: val2
+  key3: val3
+  etc. 
+  }
 ```
-#Dictionaries
 
-Dictionaries are similar to HashMaps in other languages. Essentially, it is a list of objects where a *key* can refer to a certain *value*.
-![Dictionary](data-structures/dictionary.png)
-
-As shown above.
-
-This is especially useful for keeping track of details of objects. For example, if we wanted to have a collection of all the capitals of all the countries in the world, we may use the country name as the ky and the capital as the value in order to intuitively order our dictionaries
-
-#Declaration
-To declare a dictionary, we use the curly brackets {} and for each key-value pair, we use the format Key:value which each pair is separated by a comma
-
-For example
-```dict1 = {“USA”:”DC”, “Brazil”:”Brasília”, “China”: “Beijing”}
+This makes data organization much more intuitive than those with lists or other data types. We can organize a dictionary using keys that match their values. For example, instead of storing the capitals of countries using a list like this,
+```python
+capitals = ['Beijing', 'Washington DC', 'Paris']
 ```
-#Useful Methods
-.key() returns a tuple of all keys in the dictionary
-.values() returns a tuple of all values in the dictionary
-.items() returns a tuple of key-value pairs, each paired inside a separate tuple inside the tuple.
-.get() returns the value of the specified key
-.update() is like the append of dictionaries. Takes a key:value parameter
+We can write it as a dictionary:
+```python
+capitals = {
+  'China': 'Beijing',
+  'United States': 'Washington DC', 
+  'France': 'Paris'
+  }
+```
+Remember that you can keep each key:value pair on the same line, but by separating them it greatly increases the readability. 
+
+Additionally, you can access each value of a dictionary using its key:
+```python
+capitals = {
+  'China': 'Beijing',
+  'United States': 'Washington DC', 
+  'France': 'Paris'
+  }
+
+print(capitals['China'])
+
+>>> Beijing
+```
+Here are some useful methods: 
+- `.key()` returns a tuple of all keys in the dictionary
+- `.values()` returns a tuple of all values in the dictionary
+- `.items()` returns a tuple of key-value pairs, each paired inside a separate tuple inside the tuple.
+- `.get()` returns the value of the specified key
+- `.update()` is like the append of dictionaries. Takes a key:value parameter
+
+## Tuples
+
+Unlike the previous data types, tuples are unchangeable. Additionally, they are ordered, and **do** allow duplicate values. 
+Tuples are written with round brackets:
+```python
+fruits = ("apple", "banana", "orange")
+```
+
+Tuples are mainly used because they are more memory efficient than lists, since they are immutable. Additionally, when you return multiple values in a function, like this:
+```python
+def foo():
+  return a, b
+```
+The tuple `(a, b)` is returned as a value, automatically turned into one. 
 
 
