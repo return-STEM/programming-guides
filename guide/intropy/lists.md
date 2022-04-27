@@ -305,7 +305,7 @@ print(letters)
 >>> ['a', 'b', 'd']
 ```
 
-## .append()
+## `.append()`
 
 To add an element to the end of the list, you can use` .append()`. 
 Just like `.pop()`, use it after the name of the list, with the value you want to append.
