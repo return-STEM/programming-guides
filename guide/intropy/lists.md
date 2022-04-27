@@ -184,7 +184,7 @@ Using the declarations above, evaluate:
 9. `nums[:5]`
 
 <details>
-	<summary> Answers: </summary>
+<summary> Answers: </summary>
 1. 1
 2. 'pig'
 3. 'lemon'
@@ -198,7 +198,7 @@ Using the declarations above, evaluate:
 
 ## `len()`
 
-To get the length of a list, you can use `len()`.
+To get the length of a list as an integer, you can use `len()`. 
 
 ```python
 my_list = ['a', 'b', 'c', 'd']
@@ -213,6 +213,7 @@ my_str = "Hello World"
 print(len(my_str))
 >>> 11
 ```
+> Remember that spaces are included in the length, along with other special symbols. However, the quotes `"` that surround strings are not included. 
 
 ## Debug-printing lists
 
@@ -246,11 +247,28 @@ for i in range(0, len(my_list)):
 >>> pear
 >>> banana
 >>> kiwi
-
 ```
-## `for` loop short syntax
-There’s a shortcut for the code presented in the last slide:
 
+In this example, we first create a for loop that iterates over the numbers from 0 to the length of the list. For `my_list`, the length is `5`, so the loop will iterate over `0, 1, 2, 3, 4`. 
+
+Remember that we can do different operations on the list, like math:
+```python
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+for i in range(0, len(numbers)):
+    numbers[i] += 1
+print(numbers)
+
+>>> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+Additionally, you don't need to iterate over the *entire* list. For example, if you want to iterate over the first half of a list, you can do
+```python
+for i in range(0, len(numbers) / 2):
+```
+However, if your list had an odd number of terms, you would need to adjust this depending on whether you want the greater half or the lesser half. 
+
+## `for` loop short syntax
+
+Remember that `for` loops don't just iterate over numbers. Instead, they can also iterate over lists directly:
 ```python
 my_list = ["orange", "apple", "pear", "banana", "kiwi"]
 for i in my_list:
@@ -261,12 +279,12 @@ for i in my_list:
 >>> pear
 >>> banana
 >>> kiwi
-
 ```
-
 In the previous method, you were cycling through numbers, and using numbers to reference elements in the list. Now you are directly cycling through the elements of the list without having to worry about indices.
 
 > **You cannot use this type of loop to change the values inside a list.**
+
+However, you can use this method to change _other_ values, just not those inside the list. 
 
 # List Methods & Operations
 
@@ -275,7 +293,7 @@ In the introduction, we talked about a grading system. You could define a bunch 
 ## `.pop()`
 
 To delete a single element from a list, you can use the `.pop()` function. For example, `letters.pop(2)` deletes the item at the second index (3rd element).
-- Notice that this shifts all indexes after the deleted item:
+Notice that this shifts all indexes after the deleted item:
 - Before: `letters[0] = "a", letters[1] = "b", letters[2] = "c", letters[3] = "d"`
 - After: `letters[0] = "a", letters[1] = "b", letters[2] = "d"`
 
@@ -283,16 +301,16 @@ To delete a single element from a list, you can use the `.pop()` function. For e
 letters = ["a", "b", "c", "d"]
 letters.pop(2)
 print(letters)
-Output:
-['a', 'b', 'd']
 
+>>> ['a', 'b', 'd']
 ```
 
 ## .append()
 
-To add an element to the end of the list, you can use` .append()`Just like `.pop()`, use it after the name of the list, with the value you want to append.
+To add an element to the end of the list, you can use` .append()`. 
+Just like `.pop()`, use it after the name of the list, with the value you want to append.
 
-For example, to append `'e'` to the end of the list `letters`, you can use `letters.append(‘e’)`
+For example, to append `'e'` to the end of the list `letters`, you can use `letters.append('e')`
 
 ```python
 letters = ['a', 'b', 'c', 'd']
@@ -303,27 +321,26 @@ print(letters)
 
 ## List Operators: * and +
 
-Similar to strings, `+` and `*` can be used on lists
+Similar to strings, `+` and `*` can be used on lists. 
 
-`+` concatenates two lists together
+The `+` operator concatenates two lists together. This joins the two lists into one list, such as in the example below. 
 
-`*` repeats a list multiple times
+The `*` operator repeats a list multiple times. 
 
 ```python
- word = ['racecar']
- print(word * 4)
- >>>['racecar', 'racecar', 'racecar', 'racecar']
- print(['racecar', 'bus'] + ['train'])
- >>>['racecar', 'bus', 'train']
- print([1, 2, 3] + [4, 5, 6])
- >>>[1, 2, 3, 4, 5, 6]
- # Notice that the values are not added together,  instead the lists are.
+word = ['racecar']
+print(word * 4)
+>>>['racecar', 'racecar', 'racecar', 'racecar']
+print(['racecar', 'bus'] + ['train'])
+>>>['racecar', 'bus', 'train']
+print([1, 2, 3] + [4, 5, 6])
+>>>[1, 2, 3, 4, 5, 6]
 ```
-
+Notice that the values are not added together,  instead the lists are.
 ## `in`
 
-- While `in` is a keyword when writing `for` loops, you can also use it to check whether an element is present in the list
-  - `in` returns `True` if the value is in the list/string and `False` if the value is not
+While `in` is a keyword when writing `for` loops, you can also use it to check whether an element is present in the list. 
+`in` returns `True` if the value is in the list/string and `False` if the value is not.
 
 ```python
 my_list = ['a', 'b', 'c', 'd']
@@ -342,7 +359,6 @@ print('o' in "Hello World")
 While you explore more libraries, you will find that many functions return a special data type called a **tuple**. Tuples are declared like lists, but use `()` instead of `[]`.
 
 These data types behave like lists, but are **immutable*** *(cannot be changed)*. Therfore, you cannot reassign values in a tuple, and the size of a tuple cannot change.
-
 
 Reference a tuple's elements just like you would in a list:
 
@@ -372,16 +388,16 @@ print(list(animals))
 ```
 
 # List Input and Output
-## Inputting into lists
-### On one line
+## Input with Lists
 
-You cannot directly input lists with `input()`, since python believes that it is a string:
+You cannot directly input lists with `input()`, since `input()` accepts everything as a string, rather than another data type. 
 
 ```python
 my_input = input("Enter input: ")
 print(type(my_input))
 Enter input: [1, 2, 3]
-<class 'str'>
+
+>>> <class 'str'>
 ```
 
 Instead, you can have the user input each element of the list with a space in between, using the `.split()` method on `input()`.
@@ -398,7 +414,7 @@ print(my_input)
 
 If you put nothing in `.split()`, it will split the string by spaces. However, you can choose to include a string inside of `.split()` to tell it what to split by.
 
-### Multiline Input
+## Multiline Input
 
 Another method of inputting values into a list could be on multiple lines, using `input()` many times with a loop.
 
@@ -419,7 +435,7 @@ print(my_list)
 >>> ['1', '2', '3']
 ```
 
-### Casting an entire list
+## Casting an Entire List
 
 Notice that when you used `input().split()` to get inputs into a list from the user, everything was a string.
 
@@ -442,10 +458,10 @@ print(vals)
 When using `print()` on a list, you'll notice that it prints it with brackets and commas.
 
 If you don't want that, you can do
-
-`string.join(list_name)`
-
-`string` is what should be in between the printed elements, usually `' '` for our purposes:
+```python
+str.join(list_name)
+```
+`str` is what should be in between the printed elements, usually `' '` for our purposes:
 
 ```python
 words = ["quickly", "scurry", "and", "find", "freedom"]
@@ -458,8 +474,9 @@ print(other_sentence)
 ```
 
 # Multidimensional Lists
+
 Lists can also have multiple dimensions (2D, 3D, 4D).  You can do this by putting lists inside of lists, like this:
-```
+```python
 [["r1c1", "r1c2"], ["r2c1", "r2c2"]]
 ```
 
@@ -475,11 +492,11 @@ Elements can be addressed by indexing twice (`my_list[row][col]`)
 Multidimensional lists can be used to model many real-world things. Tables and graphs are all 2-dimensional data that can be modeled with multidimensional lists
 
 You can also make 3, 4, and 5 dimensional lists (and so on)
-Put list inside of lists inside of lists until you haveachieved the number of desired dimensions
+Put list inside of lists inside of lists until you have achieved the number of desired dimensions.
 
 ## Example
 
-You can represent a seating chart through a multidimensional list:
+We can use 2D lists to represent more complex situations, a seating chart through a multidimensional list:
 
 ```python
 seating_chart = [
@@ -495,34 +512,34 @@ print(seating_chart[0][0])
 # Print the person sitting in the third row and fourth column
 print(seating_chart[2][3]
 >>> Lee
-
 ```
+
+In this way, we can represnet much more complex situations. Think of a map of the city - each element in a list could represent a building, with its position representing where the building is in a city. 
 
 ## Iterating through multidimensional lists
 You can iteratively print values of a list:
-
+```python
+for i in range(len(list)): 
+    print(i)
 ```
-for i in range(len(list)): print(i)
-```
 
-However, if you did this using a multidimensional list, it would print simply the lists inside, rather than each individual value
+However, if you did this using a multidimensional list, it would print simply the lists inside, rather than each individual value:
 
 ```python
 two_d_list = [[1,2,3],[4,5,6],[7,8,9]]
 for i in range(len(two_d_list)):
 	print(two_d_list[i])
+	
 >>> [1,2,3]
 >>> [4,5,6]
 >>> [7,8,9]
-
 ```
 
-We can solve this with nested loops. A nested loop can iterate through multidimensional lists. The list [1,2,3] inside **two_d_list** is actually `two_d_list[0]`. Similarly, [4,5,6] is `two_d_list[1]` and [7,8,9] is `two_d_list[2]`
+We can solve this with nested loops. A nested loop can iterate through multidimensional lists. The list `[1, 2, 3]` inside **two_d_list** is actually `two_d_list[0]`. Similarly, `[4, 5, 6]` is `two_d_list[1]` and `[7, 8, 9]` is `two_d_list[2]`.
 
-An outer loop will retrieve the lists inside the combined list
-An inner loop will retrieve the values inside the inner lists
+An outer loop will retrieve the lists inside the combined list, while the inner loop will retrieve the values inside the inner lists.
 
-The inner loop will iterate through `two_d_list[i]`, or every list that is inside the combined list
+The inner loop will iterate through `two_d_list[i]`, or every list that is inside the combined list:
 
 ```python
 two_d_list = [[1,2,3],[4,5,6],[7,8,9]]
@@ -539,7 +556,6 @@ for i in range(len(two_d_list)):
 >>> 7 8 9
 ```
 
-### Trace Table
 | Iteration | Value of loop variables | Value printed |
 | :-: | :-: | :-: |
 | 1 | i = 0, j = 0 | 1 |
@@ -548,10 +564,12 @@ for i in range(len(two_d_list)):
 | 2  | i = 1, j = 0 | 4 |
 | 2 | i = 1, j = 1 | 5 |
 | 2 | i = 1, j = 2 | 6 |
-| :-: | :-: | :-: |
 | 3 | i = 2, j = 0 | 7 |
 | 3 | i = 2, j = 1 | 8 |
 | 3 | i = 2, j = 2 | 9 |
+
+Here's a trace table of the example represented earlier, that shows what each for loop is going through. 
+
 
 # List Methods
 | Function | Usage | Example |
