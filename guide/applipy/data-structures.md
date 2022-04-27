@@ -3,6 +3,7 @@ In this lesson, you will learn about data structures, which are just ways of org
 
 # Linked Lists
 Linked lists are collections of **nodes** that are chained together by **links**. Each node stores some data and a *next*. You can visualize a node like this:
+
 ![Node](data-structures/node.png)  
 
 *next* points at the next node in the linked list. 
