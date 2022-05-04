@@ -198,11 +198,69 @@ print(reduce(fact,lst))
 >>> 720
 ```
 
-# Decorator Functions
-
-Decorators can be used to modify the behavior of a function - they "decorate" it with extra code. 
-
 # Lambda Functions
 
+Lambda functions are small and anonymous(they have no name). The syntax to define one looks like this:
+```python
+lambda arguments: expression
+```
+Lambda functions can only have one expression. A simple example of a lambda would be
+```python
+x = lambda a, b, c: a + b + c
+
+print(x(1, 2, 3))
+
+>>> 6
+```
+Lambdas are typically used for two purposes: passing small functions to higher-order functions, and for small use in your code. 
+
+Consider the following example:
+```python
+def double(n):
+    return n * 2
+lst = [1, 2, 3, 4]
+doubled = list(map(double, lst))
+```
+Which simply doubles the list. With a lambda, we can write
+```python
+lst = [1, 2, 3, 4]
+doubled = list(map(lambda n: n * 2, lst))
+```
+Which accomplishes the same effect. 
 
 # Operator Overloading
+
+## `__str__`
+
+Classes can have a `__str__` method, which is automatically called when the class is evaluated as a string:
+```python
+class Fraction:
+    def __init__(self, numerator, denominator):
+        # Code
+    def __str__(self):
+        return f"{numerator} / {denominator}"
+
+frac = Fraction(1, 2)
+print(frac)
+
+>>> 1 / 2
+```
+
+## `__call__`
+
+Classes can also have `__call__` methods, which are automatically called when the class is called like a function:
+
+```python
+class Fraction:
+    def __init__(self, numerator, denominator):
+        # Code
+    def __str__(self):
+        return f"{numerator} / {denominator}"
+    def __call__(self):
+        return numerator / denominator
+        
+frac = Fraction(1, 2)
+print(frac())
+
+>>> 0.5
+```
