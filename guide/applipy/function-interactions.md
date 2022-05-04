@@ -1,5 +1,37 @@
 In the past, you have learned about functions and methods, as well as their uses. In this lesson, you will learn about more advanced uses of functions and how to implement them in your code. Additionally, you will learn useful functions to improve the code that you write. 
 
+# Functions with Multiple Parameters
+
+You might have noticed that certain functions, such as `print()`, can take any number of arguments, while your own functions cannot. 
+
+This is because it uses a special keyword, called `*args` and `**kwargs`. Using these keywords, we can pass variable numbers of arguments into our function. 
+
+The `*` in `*args` tells Python that it should be an iterable:
+
+Here's a simple example:
+```python
+def mult(*args):
+    product = 1
+    for arg in args:
+        mult *= arg
+    return product
+
+print(mult(2, 4))
+print(mult(1, 2, 3, 4, 5))
+
+>>> 8
+>>> 120
+```
+`**kwargs` instead is used to pass keyworded argument lists. 
+```python
+def func(**kwargs):
+    print("kwargs: ", kwargs)
+
+func(first='1st', second='2nd', third='3rd')
+
+>>> kwargs:  {'first': '1st', 'second': '2nd', 'third': '3rd'}
+```
+
 # Higher-Order Functions
 
 You already know that functions can be passed arguments to change what they do. Functions can also be passed other functions as arguments. 
@@ -168,6 +200,7 @@ print(reduce(fact,lst))
 
 # Decorator Functions
 
+Decorators can be used to modify the behavior of a function - they "decorate" it with extra code. 
 
 # Lambda Functions
 
