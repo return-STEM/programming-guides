@@ -1,12 +1,12 @@
 In the past, you have learned about functions and methods, as well as their uses. In this lesson, you will learn about more advanced uses of functions and how to implement them in your code. Additionally, you will learn useful functions to improve the code that you write. 
 
-# Functions with Multiple Parameters
+# Functions with Arbitrary Parameters
 
 You might have noticed that certain functions, such as `print()`, can take any number of arguments, while your own functions cannot. 
 
-This is because it uses a special keyword, called `*args` and `**kwargs`. Using these keywords, we can pass variable numbers of arguments into our function. 
+This is because it uses special parameters, called `*args` and `**kwargs`. Using these keywords, we can pass variable numbers of arguments into our function. 
 
-The `*` in `*args` tells Python that it should be an iterable:
+The `*` in `*args` specifies that the arguments will be a list:
 
 Here's a simple example:
 ```python
@@ -22,7 +22,8 @@ print(mult(1, 2, 3, 4, 5))
 >>> 8
 >>> 120
 ```
-`**kwargs` instead is used to pass keyworded argument lists. 
+
+`**kwargs` instead is used to pass keyworded argument lists.  Returns a list.
 ```python
 def func(**kwargs):
     print("kwargs: ", kwargs)
@@ -31,6 +32,10 @@ func(first='1st', second='2nd', third='3rd')
 
 >>> kwargs:  {'first': '1st', 'second': '2nd', 'third': '3rd'}
 ```
+
+> Note: the names `args` and `kwargs` are not required. The asterisks `*` and `**` tell Python to accept an arbitrary amount of arguments or arbitrary keyword arguments
+
+This is usually used when writing [libraries](/intropy/arithmetic#modules) because we can make a general-purpose function that determines its behavior on the fly.
 
 # Higher-Order Functions
 
@@ -232,7 +237,8 @@ Which accomplishes the same effect.
 
 ## `__str__`
 
-Classes can have a `__str__` method, which is automatically called when the class is evaluated as a string:
+Classes can have a `__str__` method, which is automatically called when the class is evaluated as a string (for example, in `print()` and when typecasted using `str()`:
+
 ```python
 class Fraction:
     def __init__(self, numerator, denominator):
@@ -245,6 +251,10 @@ print(frac)
 
 >>> 1 / 2
 ```
+
+### `__repr__`
+
+The `__repr__` function is similar to `print()`, except it tells Python what to do when evaluating expressions inside a live console (like the "Console" tab in repl.it)
 
 ## `__call__`
 
