@@ -370,3 +370,29 @@ int main() {
 >>> 1 2 3 4 5
 ```
 A parameter can be given a default value by including it in its definition, as shown above. When it's not included, it goes to its default value. However, the default value an still be changed. 
+
+# Recursive Functions
+
+Recursive functions are functions that call themselves. When a recursive function runs, it will run until it reaches a "base case" or halting condition in which its job is fulfilled. Base cases are definite and do not call other functions. 
+If any halting condition is not defined, the function will run itself in an infinite loop. 
+You can think of a recursive function like a chain of dominoes: 
+- As each domino falls, it triggers the next one to fall
+- The last domino that falls acts as our "base case", because there is no more dominos for it to push down 
+- Every a domino falls in our recursive function, our value is updated
+
+You might have heard of a _fibonacci sequence_ before. The fibonacci sequence starts with 0 and 1. Each next term is made up of the sum of the previous two:
+The first couple terms of this sequence look like this:
+```
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+```
+We can implement this with recursion, by making the function call the values of previous fibonacci numbers, since the nth fibonacci number is equal to the (n-1)th number and the (n-2)th number.
+
+```cpp
+int fib(int n) 
+{
+    if (n == 1 || n == 2) 
+	return 1;
+    else 
+	return fib(n-1) + fib(n-2); 
+} 
+```
