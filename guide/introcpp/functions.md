@@ -140,37 +140,11 @@ int main() {
 >>> 20
 ```
 
-# pass by pointer section wip
-
 ## Passing Arrays to Functions
 
 C++ allows you to both pass arrays and return arrays through functions.
+Let's discuss the first two ways to pass arrays to functions in C++:
 
-There are three ways to pass arrays to functions in C++:
-
-### Pointers
-
-The first way is to use a pointer that points to the array: 
-
-```cpp
-#include <iostream>
-using namespace std;
-void print(int *arr)
-{
-    for (int i = 0; i < 5; i++)
-    {
-        cout << arr[i] << ' ';
-    }
-  cout << endl;
-}
-
-int main() {
-    int arr[5] = {1, 2, 3, 4, 5};
-    print(arr);
-}
-
->>> 1 2 3 4 5
-```
 ### Passing with a Sized Array
 
 You can also pass using a sized array with this format:
