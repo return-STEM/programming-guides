@@ -51,6 +51,10 @@ There's an error because a double quote is missing, so Python won't understand t
 
 Generally, if you type something that is incorrect, your IDE (the environment you program in, like VScode, Pycharm, Repl, etc.) will put a squiggly line under the faulty code.
 
+### Application State
+
+Certain errors only arise under certain input conditions. Some inputs will cause flawed programs, but others won't. An application state is a way of saying what everything is when the code is running (variables, input, etc.)
+
 ## Runtime Errors
 
 Runtime errors occur when while the program is trying to run. Runtime errors occur when the program is telling Python to do something that it cannot do, but it technically still grammatically correct. 
@@ -167,6 +171,83 @@ print(f"Sum: {c}")
 
 # The second "assignment" to c is not actually an assignment, it is an equality
 ```
+
+Since this code uses the `==` operator instead of the assignment operator, `=`, the code doesn't output the correct values, since c is never assigned to a + b, it just takes on the values of `a * b`. Python won't call you out on it, and your program will still run fine, but it won't do its job.
+
+Logical errors are trickier to find and fix, especially in larger projects. They are usually also dependent on application state. 
+When approaching logical errors, it is useful to trace code:
+- Manually go through each line and see what it does
+- Check how each line affects the outcome of the program
+- Sometimes logical errors can lead to runtime errors
+- If this is the case, go to the offending line of code and trace upwards
+- See how the data got there in the first place
+To fix logical errors, either use print statements or the debugger to trace the data until we get to the offending source.
+
+By knowing the application state, we can reproduce the error and see what made it happen. 
+Some errors only occur when the user inputs a particular thing. 
+For example, a program that divides two numbers might be working perfectly fine till you type the word "apple" into it, causing an error.
+Even though a program can work for some inputs, it should work for all inputs!
+We'll go over one of the easier ways of "peeking into" application state: `print()`. 
+
+### Using `print()` to Debug
+
+Consider this faulty code:
+```python
+
+def maxnum(list):
+    max_num = 0
+    for num in list:
+        print(num, max_num)
+        if num > max_num:	
+            max_num = num
+    return max_num
+
+l = [-1,-2,-4]
+print(maxnum(l))
+```
+And its output: 
+```
+>>> -1 0
+>>> -2 0
+>>> -4 0
+>>> 0
+```
+
+This code should return the maximum absolute value of the number in each list. However, all the numbers are less than 0, since they are negative. Therefore, this code doesn't work!
+
+By using `print`, we can check what parts of the program experience issues and fix them in small parts. 
+
+
+# `try` `except` statements
+
+When an exception occurs in Python, the program stops running and returns an error message. For a larger program, this will cause the program to crash. We can handle certain types of errors using `try` `except` statements. 
+
+A `try` statement tells Python to _try_ running the code. If the code returns an error, it will execute the code in the `except` statement. If not, it will execute the code normally and skip the `except` statement. 
+
+The syntax of a `try` `except` statement looks like this:
+```python
+try:
+    # Python will try running this code block
+except:
+    # If an error occurs, this will be run this instead
+```
+
+You can either leave the `except` statement by itself, which will cause it execute under any type of error, or specify the type of error, which it will only execute if that error is encountered. 
+
+Example: 
+
+```python
+a = int(input("Enter dividend"))
+b = int(input("Enter divisor"))
+
+try:
+    print(a / b)
+except ZeroDivisionError:
+    print("Zero division error")
+```
+
+
+
 
 
 
