@@ -75,3 +75,99 @@ ZeroDivisionError: division by zero
 
 Runtime errors can sometimes be easy to fix, because they might be typos. 
 Runtime errors might also come from invalid input. 
+
+Consider the following code:
+```python
+# This program prints the quotient of 
+# two numbers 
+
+a = int(input("Enter the divisor: "))
+b = int(input("Enter the dividend: "))
+
+c = a/b
+
+print(f"Quotient: {c}")
+--------------------------
+Enter the divisor: 5
+Enter the dividend: 0
+
+Traceback (most recent call last): 
+    File "main.py", line 4, in ,module.
+        c = a/b
+ZeroDivisionError: division by zero
+```
+
+The program has correct syntax and can execute. 
+However a runtime error has occurred!
+If we look at line 4, where the error occurred, there is no division by 0 occurring there on the surface
+Let's trace through the code:
+In line 1, we store  the int 5 in variable a
+In line 2, we store the int 0 in variable b
+In line 4, we divide a and b, or 5/0
+A number cannot be divided by 0. 
+The error came from b being assigned to 0 through the input, which would result in the variable a being divided by 0. 
+
+One of the solutions to this is to use _defensive programming_.
+We can add code that prevents `b` from ever being assigned the value 0.
+This effectively prevents ZeroDivisionError.
+When the user inputs 0, the program:
+- Asks the user to input the dividend again 
+- Reminds them that the dividend cannot be 0
+
+```python
+# This program prints the quotient of
+# two numbers 
+
+a = int(input("Enter the divisor: "))
+
+while True: 
+    b = int(input("Enter the dividend: "))
+    if b == 0: 
+        print("The dividend cannot be 0")
+        continue
+    break
+
+c = a/b
+
+print(f"Quotient: {c}")
+--------------------------
+Enter the divisor: 5
+Enter the dividend: 0
+The dividend cannot be 0
+Enter the dividend: 5
+Quotient: 1
+```
+
+## Logical Errors
+Logical Errors are the trickiest errors to find and fix. They are "silent", so Python does not help you fix them.
+Logical errors occur when the code itself runs perfectly fine, but it does not produce the result you want it to.
+Python only knows what it is told to do: it is doing its job!
+These errors can arise from typos or incorrect program design
+Examples:
+- Inputting an incorrect, but valid variable name
+- Indenting to a wrong but valid level
+- Not respecting order of operations but still producing valid code
+- Using a wrong but valid operator
+All of this code will run, but it will not produce the result you want it to!
+
+For example, if you gave a chef to make a pie and you gave it a cake, it would just make a pie. But you don't want that, so that's not good!
+
+Consider the following faulty code:
+```python
+# This is a program that outputs the 
+# product and sum of a and b
+
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+c = a * b
+
+print(f"Product: {c}")
+c == a + b
+print(f"Sum: {c}")
+
+# The second "assignment" to c is not actually an assignment, it is an equality
+```
+
+
+
+
