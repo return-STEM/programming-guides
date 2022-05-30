@@ -1,6 +1,6 @@
 ---
-slides: 
-"https://docs.google.com/presentation/d/1Ywx5Pz90xF7HJqE5_LsLAC27H9xq3ObNm12cuM-Fvt4"
+slides: "https://docs.google.com/presentation/d/1Ywx5Pz90xF7HJqE5_LsLAC27H9xq3ObNm12cuM-Fvt4"
+handout: ""
 ---
 
 Programming is not easy. We have to translate what we want the program to do into the strictly typed language of C++. We have to make sure that the program follows all the rules and conventions of the language while also dealing with the limitations of what the language offers. Naturally, error occurs. The program doesn't do what we want it to: it doesn't compile, the output isn't what you expected, or it crashes midway through running it. We call any one of these or any combination of these a "bug". 
